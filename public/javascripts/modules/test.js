@@ -1,5 +1,5 @@
 function test() {
-  const message = 'Test.js is connected!';
+  const message = "Test.js is connected!";
   console.log(message);
 }
 

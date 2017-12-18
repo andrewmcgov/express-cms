@@ -1,5 +1,6 @@
-import test from './modules/test';
-require('../stylesheets/style.scss');
+import buildTinyMce from "./modules/tinymce";
+require("../stylesheets/style.scss");
 
-var testing = 1;
-test();
+const tinyDiv = document.querySelector("#tinymce");
+console.log(tinyDiv);
+buildTinyMce(tinyDiv);
