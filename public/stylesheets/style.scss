@@ -1,12 +1,16 @@
-$blue: #00B7FF;
+//@import "~tinymce/skins/skin.min.css";
+
+// @import  "tinymce/themes/skins/skin.min.css";
+@import "./skins/lightgray/skin.min.css";
+$blue: #00b7ff;
 
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  color: #000; 
+  color: #000;
 }
 
 a {
-  color: $blue; 
+  color: $blue;
   font-size: 10px;
 }

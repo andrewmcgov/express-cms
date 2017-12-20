@@ -2263,7 +2263,7 @@ div.mce-menu .mce-menu-item b {
   opacity: 0.6;
   filter: alpha(opacity=60);
   zoom: 1;
-  background: #fff url(/fonts/loader.gif) no-repeat center center;
+  background: #fff url("img/loader.gif") no-repeat center center;
 }
 
 .mce-throbber-inline {
@@ -2668,508 +2668,508 @@ i.mce-i-resize {
 }
 
 .mce-i-save:before {
-  content: "\E000";
+  content: "\e000";
 }
 
 .mce-i-newdocument:before {
-  content: "\E001";
+  content: "\e001";
 }
 
 .mce-i-fullpage:before {
-  content: "\E002";
+  content: "\e002";
 }
 
 .mce-i-alignleft:before {
-  content: "\E003";
+  content: "\e003";
 }
 
 .mce-i-aligncenter:before {
-  content: "\E004";
+  content: "\e004";
 }
 
 .mce-i-alignright:before {
-  content: "\E005";
+  content: "\e005";
 }
 
 .mce-i-alignjustify:before {
-  content: "\E006";
+  content: "\e006";
 }
 
 .mce-i-alignnone:before {
-  content: "\E003";
+  content: "\e003";
 }
 
 .mce-i-cut:before {
-  content: "\E007";
+  content: "\e007";
 }
 
 .mce-i-paste:before {
-  content: "\E008";
+  content: "\e008";
 }
 
 .mce-i-searchreplace:before {
-  content: "\E009";
+  content: "\e009";
 }
 
 .mce-i-bullist:before {
-  content: "\E00A";
+  content: "\e00a";
 }
 
 .mce-i-numlist:before {
-  content: "\E00B";
+  content: "\e00b";
 }
 
 .mce-i-indent:before {
-  content: "\E00C";
+  content: "\e00c";
 }
 
 .mce-i-outdent:before {
-  content: "\E00D";
+  content: "\e00d";
 }
 
 .mce-i-blockquote:before {
-  content: "\E00E";
+  content: "\e00e";
 }
 
 .mce-i-undo:before {
-  content: "\E00F";
+  content: "\e00f";
 }
 
 .mce-i-redo:before {
-  content: "\E010";
+  content: "\e010";
 }
 
 .mce-i-link:before {
-  content: "\E011";
+  content: "\e011";
 }
 
 .mce-i-unlink:before {
-  content: "\E012";
+  content: "\e012";
 }
 
 .mce-i-anchor:before {
-  content: "\E013";
+  content: "\e013";
 }
 
 .mce-i-image:before {
-  content: "\E014";
+  content: "\e014";
 }
 
 .mce-i-media:before {
-  content: "\E015";
+  content: "\e015";
 }
 
 .mce-i-help:before {
-  content: "\E016";
+  content: "\e016";
 }
 
 .mce-i-code:before {
-  content: "\E017";
+  content: "\e017";
 }
 
 .mce-i-insertdatetime:before {
-  content: "\E018";
+  content: "\e018";
 }
 
 .mce-i-preview:before {
-  content: "\E019";
+  content: "\e019";
 }
 
 .mce-i-forecolor:before {
-  content: "\E01A";
+  content: "\e01a";
 }
 
 .mce-i-backcolor:before {
-  content: "\E01A";
+  content: "\e01a";
 }
 
 .mce-i-table:before {
-  content: "\E01B";
+  content: "\e01b";
 }
 
 .mce-i-hr:before {
-  content: "\E01C";
+  content: "\e01c";
 }
 
 .mce-i-removeformat:before {
-  content: "\E01D";
+  content: "\e01d";
 }
 
 .mce-i-subscript:before {
-  content: "\E01E";
+  content: "\e01e";
 }
 
 .mce-i-superscript:before {
-  content: "\E01F";
+  content: "\e01f";
 }
 
 .mce-i-charmap:before {
-  content: "\E020";
+  content: "\e020";
 }
 
 .mce-i-emoticons:before {
-  content: "\E021";
+  content: "\e021";
 }
 
 .mce-i-print:before {
-  content: "\E022";
+  content: "\e022";
 }
 
 .mce-i-fullscreen:before {
-  content: "\E023";
+  content: "\e023";
 }
 
 .mce-i-spellchecker:before {
-  content: "\E024";
+  content: "\e024";
 }
 
 .mce-i-nonbreaking:before {
-  content: "\E025";
+  content: "\e025";
 }
 
 .mce-i-template:before {
-  content: "\E026";
+  content: "\e026";
 }
 
 .mce-i-pagebreak:before {
-  content: "\E027";
+  content: "\e027";
 }
 
 .mce-i-restoredraft:before {
-  content: "\E028";
+  content: "\e028";
 }
 
 .mce-i-bold:before {
-  content: "\E02A";
+  content: "\e02a";
 }
 
 .mce-i-italic:before {
-  content: "\E02B";
+  content: "\e02b";
 }
 
 .mce-i-underline:before {
-  content: "\E02C";
+  content: "\e02c";
 }
 
 .mce-i-strikethrough:before {
-  content: "\E02D";
+  content: "\e02d";
 }
 
 .mce-i-visualchars:before {
-  content: "\E02E";
+  content: "\e02e";
 }
 
 .mce-i-visualblocks:before {
-  content: "\E02E";
+  content: "\e02e";
 }
 
 .mce-i-ltr:before {
-  content: "\E02F";
+  content: "\e02f";
 }
 
 .mce-i-rtl:before {
-  content: "\E030";
+  content: "\e030";
 }
 
 .mce-i-copy:before {
-  content: "\E031";
+  content: "\e031";
 }
 
 .mce-i-resize:before {
-  content: "\E032";
+  content: "\e032";
 }
 
 .mce-i-browse:before {
-  content: "\E034";
+  content: "\e034";
 }
 
 .mce-i-pastetext:before {
-  content: "\E035";
+  content: "\e035";
 }
 
 .mce-i-rotateleft:before {
-  content: "\EAA8";
+  content: "\eaa8";
 }
 
 .mce-i-rotateright:before {
-  content: "\EAA9";
+  content: "\eaa9";
 }
 
 .mce-i-crop:before {
-  content: "\EE78";
+  content: "\ee78";
 }
 
 .mce-i-editimage:before {
-  content: "\E915";
+  content: "\e915";
 }
 
 .mce-i-options:before {
-  content: "\EC6A";
+  content: "\ec6a";
 }
 
 .mce-i-flipv:before {
-  content: "\EAAA";
+  content: "\eaaa";
 }
 
 .mce-i-fliph:before {
-  content: "\EAAC";
+  content: "\eaac";
 }
 
 .mce-i-zoomin:before {
-  content: "\EB35";
+  content: "\eb35";
 }
 
 .mce-i-zoomout:before {
-  content: "\EB36";
+  content: "\eb36";
 }
 
 .mce-i-sun:before {
-  content: "\ECCC";
+  content: "\eccc";
 }
 
 .mce-i-moon:before {
-  content: "\ECCD";
+  content: "\eccd";
 }
 
 .mce-i-arrowleft:before {
-  content: "\EDC0";
+  content: "\edc0";
 }
 
 .mce-i-arrowright:before {
-  content: "\E93C";
+  content: "\e93c";
 }
 
 .mce-i-drop:before {
-  content: "\E935";
+  content: "\e935";
 }
 
 .mce-i-contrast:before {
-  content: "\ECD4";
+  content: "\ecd4";
 }
 
 .mce-i-sharpen:before {
-  content: "\EBA7";
+  content: "\eba7";
 }
 
 .mce-i-resize2:before {
-  content: "\EDF9";
+  content: "\edf9";
 }
 
 .mce-i-orientation:before {
-  content: "\E601";
+  content: "\e601";
 }
 
 .mce-i-invert:before {
-  content: "\E602";
+  content: "\e602";
 }
 
 .mce-i-gamma:before {
-  content: "\E600";
+  content: "\e600";
 }
 
 .mce-i-remove:before {
-  content: "\ED6A";
+  content: "\ed6a";
 }
 
 .mce-i-tablerowprops:before {
-  content: "\E604";
+  content: "\e604";
 }
 
 .mce-i-tablecellprops:before {
-  content: "\E605";
+  content: "\e605";
 }
 
 .mce-i-table2:before {
-  content: "\E606";
+  content: "\e606";
 }
 
 .mce-i-tablemergecells:before {
-  content: "\E607";
+  content: "\e607";
 }
 
 .mce-i-tableinsertcolbefore:before {
-  content: "\E608";
+  content: "\e608";
 }
 
 .mce-i-tableinsertcolafter:before {
-  content: "\E609";
+  content: "\e609";
 }
 
 .mce-i-tableinsertrowbefore:before {
-  content: "\E60A";
+  content: "\e60a";
 }
 
 .mce-i-tableinsertrowafter:before {
-  content: "\E60B";
+  content: "\e60b";
 }
 
 .mce-i-tablesplitcells:before {
-  content: "\E60D";
+  content: "\e60d";
 }
 
 .mce-i-tabledelete:before {
-  content: "\E60E";
+  content: "\e60e";
 }
 
 .mce-i-tableleftheader:before {
-  content: "\E62A";
+  content: "\e62a";
 }
 
 .mce-i-tabletopheader:before {
-  content: "\E62B";
+  content: "\e62b";
 }
 
 .mce-i-tabledeleterow:before {
-  content: "\E800";
+  content: "\e800";
 }
 
 .mce-i-tabledeletecol:before {
-  content: "\E801";
+  content: "\e801";
 }
 
 .mce-i-codesample:before {
-  content: "\E603";
+  content: "\e603";
 }
 
 .mce-i-fill:before {
-  content: "\E902";
+  content: "\e902";
 }
 
 .mce-i-borderwidth:before {
-  content: "\E903";
+  content: "\e903";
 }
 
 .mce-i-line:before {
-  content: "\E904";
+  content: "\e904";
 }
 
 .mce-i-count:before {
-  content: "\E905";
+  content: "\e905";
 }
 
 .mce-i-translate:before {
-  content: "\E907";
+  content: "\e907";
 }
 
 .mce-i-drag:before {
-  content: "\E908";
+  content: "\e908";
 }
 
 .mce-i-home:before {
-  content: "\E90B";
+  content: "\e90b";
 }
 
 .mce-i-upload:before {
-  content: "\E914";
+  content: "\e914";
 }
 
 .mce-i-bubble:before {
-  content: "\E91C";
+  content: "\e91c";
 }
 
 .mce-i-user:before {
-  content: "\E91D";
+  content: "\e91d";
 }
 
 .mce-i-lock:before {
-  content: "\E926";
+  content: "\e926";
 }
 
 .mce-i-unlock:before {
-  content: "\E927";
+  content: "\e927";
 }
 
 .mce-i-settings:before {
-  content: "\E928";
+  content: "\e928";
 }
 
 .mce-i-remove2:before {
-  content: "\E92A";
+  content: "\e92a";
 }
 
 .mce-i-menu:before {
-  content: "\E92D";
+  content: "\e92d";
 }
 
 .mce-i-warning:before {
-  content: "\E930";
+  content: "\e930";
 }
 
 .mce-i-question:before {
-  content: "\E931";
+  content: "\e931";
 }
 
 .mce-i-pluscircle:before {
-  content: "\E932";
+  content: "\e932";
 }
 
 .mce-i-info:before {
-  content: "\E933";
+  content: "\e933";
 }
 
 .mce-i-notice:before {
-  content: "\E934";
+  content: "\e934";
 }
 
 .mce-i-arrowup:before {
-  content: "\E93B";
+  content: "\e93b";
 }
 
 .mce-i-arrowdown:before {
-  content: "\E93D";
+  content: "\e93d";
 }
 
 .mce-i-arrowup2:before {
-  content: "\E93F";
+  content: "\e93f";
 }
 
 .mce-i-arrowdown2:before {
-  content: "\E940";
+  content: "\e940";
 }
 
 .mce-i-menu2:before {
-  content: "\E941";
+  content: "\e941";
 }
 
 .mce-i-newtab:before {
-  content: "\E961";
+  content: "\e961";
 }
 
 .mce-i-a11y:before {
-  content: "\E900";
+  content: "\e900";
 }
 
 .mce-i-plus:before {
-  content: "\E93A";
+  content: "\e93a";
 }
 
 .mce-i-insert:before {
-  content: "\E93A";
+  content: "\e93a";
 }
 
 .mce-i-minus:before {
-  content: "\E939";
+  content: "\e939";
 }
 
 .mce-i-books:before {
-  content: "\E911";
+  content: "\e911";
 }
 
 .mce-i-reload:before {
-  content: "\E906";
+  content: "\e906";
 }
 
 .mce-i-toc:before {
-  content: "\E901";
+  content: "\e901";
 }
 
 .mce-i-checkmark:before {
-  content: "\E033";
+  content: "\e033";
 }
 
 .mce-i-checkbox:before,
 .mce-i-selected:before {
-  content: "\E033";
+  content: "\e033";
 }
 
 .mce-i-insert {
@@ -3184,11 +3184,5 @@ i.mce-i-backcolor {
   text-shadow: none;
   background: #bbb;
 }
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  color: #000; }
 
-a {
-  color: #00b7ff;
-  font-size: 10px; }
+/*# sourceMappingURL=skin.min.css.map */

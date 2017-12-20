@@ -16,11 +16,7 @@ router.get("/admin", function(req, res, next) {
   res.render("adminHome", { title: "Welcome, Admin" });
 });
 
-router.get(
-  "/admin/new-post",
-
-  postController.addPost
-);
+router.get("/admin/new-post", postController.addPost);
 
 router.post("/admin/new-post", postController.writePost);
 

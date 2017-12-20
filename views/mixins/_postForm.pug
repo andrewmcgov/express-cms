@@ -1,10 +1,8 @@
 mixin postForm(post = {})
-
-    form(action=`/admin/new-post/${post._id || '' }` method="POST")
-        label(for="title") Title
-        input(type="text" name="title" value=post.title)
-        label(for="tags") Tags
-        input(type="text" name="tags")
-        label(for="content") Write the thang
-        textarea(name="content")
-        input(type="submit" value="save")
+        form#post(action=`/admin/new-post/${post._id || '' }` method="POST")
+            label(for="title") Title
+            input(type="text" name="title" value=post.title)
+            label(for="tags") Tags
+            input(type="text" name="tags")
+            textarea#tinymce(name="content" type="hidden")
+            input(type="submit" value="save")

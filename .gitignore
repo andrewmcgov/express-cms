@@ -32,3 +32,6 @@ npm-debug.log
 
 #Secrets
 variables.env
+
+# Dist files
+./public/dist/*
