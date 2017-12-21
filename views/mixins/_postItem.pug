@@ -1,0 +1,9 @@
+//- this is basically our 'grid-item' for posts
+mixin postItem(post = {})
+  .post
+    .post--title
+      a(href=`/posts/${ post.slug }`)
+        h3= post.title
+    .post--description
+      div
+        != post.content

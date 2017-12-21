@@ -1,5 +1,9 @@
 extends layout
 
+include mixins/_postItem
 block content
   h1= title
   p Welcome to #{title}
+
+  each post in posts
+    +postItem(post)
