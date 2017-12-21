@@ -13,6 +13,7 @@ var users = require("./routes/users");
 const mongoose = require("mongoose");
 const session = require("express-sessions");
 
+const errorHandlers = require("./handlers/errorHandlers");
 var app = express();
 
 // view engine setup
