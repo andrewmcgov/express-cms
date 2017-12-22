@@ -29,7 +29,7 @@ const postSchema = new mongoose.Schema({
 
 postSchema.pre("save", async function(next) {
   // slugify the title
-  this.slug = slug(this.title);
+  this.slug = slug(this.title, { lower: true, replacement: "-" });
 
   next();
 });
