@@ -1,16 +1,17 @@
-//@import "~tinymce/skins/skin.min.css";
-
 // @import  "tinymce/themes/skins/skin.min.css";
 @import "./skins/lightgray/skin.min.css";
-$blue: #00b7ff;
 
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  color: #000;
-}
+// Base - global variables, mixins, and resets
+@import "./base/variables";
+@import "./base/mixins";
+@import "./base/reset";
 
-a {
-  color: $blue;
-  font-size: 10px;
-}
+// Components - styles that will be used in multiple parts of the site
+@import "./components/typography";
+@import "./components/grid";
+@import "./components/buttons";
+@import "./components/navigation";
+@import "./components/forms";
+
+// Sections - styles for specific pages or parts of the site
+@import "./sections/admin";
