@@ -3,6 +3,7 @@ const router = express.Router();
 const { catchErrors } = require("../handlers/errorHandlers");
 
 const postController = require("../controllers/postController");
+const adminController = require("../controllers/adminController");
 
 /* GET home page. */
 router.get("/", catchErrors(postController.loadIndex));
@@ -18,5 +19,18 @@ router.get("/admin/new-post", postController.addPost);
 router.post("/admin/new-post", catchErrors(postController.writePost));
 
 router.get("/posts/:slug", catchErrors(postController.singlePost));
+
+router.get("/login", adminController.loginForm);
+
+router.get("/register", adminController.registerForm);
+
+router.post(
+  "/register",
+  // validate registration data
+  adminController.registerAdmin,
+  // register the user
+  adminController.register
+  // log the user in
+);
 
 module.exports = router;

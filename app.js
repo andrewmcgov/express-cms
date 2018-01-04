@@ -5,15 +5,17 @@ var favicon = require("serve-favicon");
 var logger = require("morgan");
 var cookieParser = require("cookie-parser");
 var bodyParser = require("body-parser");
-
+const passport = require("passport");
 var index = require("./routes/index");
 var users = require("./routes/users");
 
 // These are added by devs:
 const mongoose = require("mongoose");
 const session = require("express-sessions");
+const expressValidator = require("express-validator");
 
 const errorHandlers = require("./handlers/errorHandlers");
+require("./handlers/passport");
 var app = express();
 
 // view engine setup
@@ -31,6 +33,9 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", index);
 app.use("/users", users);
 
+app.use(expressValidator());
+app.use(passport.initialize());
+app.use(passport.session());
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error("Not Found");
