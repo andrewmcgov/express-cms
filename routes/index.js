@@ -4,6 +4,7 @@ const { catchErrors } = require("../handlers/errorHandlers");
 
 const postController = require("../controllers/postController");
 const adminController = require("../controllers/adminController");
+const authController = require("../controllers/authController");
 
 /* GET home page. */
 router.get("/", catchErrors(postController.loadIndex));
@@ -27,10 +28,11 @@ router.get("/register", adminController.registerForm);
 router.post(
   "/register",
   // validate registration data
-  adminController.registerAdmin,
+  adminController.validateAdmin,
   // register the user
   adminController.register
   // log the user in
+  //authController.login
 );
 
 module.exports = router;
