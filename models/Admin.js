@@ -11,19 +11,19 @@ const adminSchema = new mongoose.Schema({
     unique: true,
     lowercase: true,
     trim: true,
-    //validate: [validator.isEmail, "Invalid Email Address"],
+    validate: [validator.isEmail, "Invalid Email Address"],
     required: "Please Supply an email address"
   },
   name: {
     type: String,
     required: "Please supply a name",
     trim: true
-  },
-  username: {
-    type: String,
-    required: "Please supply a username",
-    trim: true
   }
+  // username: {
+  //   type: String,
+  //   required: "Please supply a username",
+  //   trim: true
+  // }
 });
 
 adminSchema.plugin(passportLocalMongoose);
