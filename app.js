@@ -1,22 +1,22 @@
 // This came with Express:
-var express = require("express");
-var path = require("path");
-var favicon = require("serve-favicon");
-var logger = require("morgan");
-var cookieParser = require("cookie-parser");
-var bodyParser = require("body-parser");
-const passport = require("passport");
-var index = require("./routes/index");
-var users = require("./routes/users");
-
-// These are added by devs:
+const express = require("express");
+const session = require("express-session");
 const mongoose = require("mongoose");
-const session = require("express-sessions");
+const MongoStore = require("connect-mongo")(session);
+const cookieParser = require("cookie-parser");
+const bodyParser = require("body-parser");
+const passport = require("passport");
+const promisify = require("es6-promisify");
+const flash = require("connect-flash");
 const expressValidator = require("express-validator");
-
+const path = require("path");
+const favicon = require("serve-favicon");
+const logger = require("morgan");
+const index = require("./routes/index");
+const users = require("./routes/users");
 const errorHandlers = require("./handlers/errorHandlers");
 require("./handlers/passport");
-var app = express();
+const app = express();
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -34,11 +34,28 @@ app.use("/", index);
 app.use("/users", users);
 
 app.use(expressValidator());
+app.use(cookieParser());
+app.use(
+  session({
+    secret: "testsecret",
+    key: "testkey",
+    resave: false,
+    saveUninitialized: false,
+    store: new MongoStore({ mongooseConnection: mongoose.connection })
+  })
+);
+
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(flash());
+
+app.use(function(req, res, next) {
+  res.locals.flash = req.flash();
+});
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error("Not Found");
+  req.login = promisify(req.login, req);
+  const err = new Error("Not Found");
   err.status = 404;
   next(err);
 });
@@ -48,10 +65,10 @@ app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get("env") === "development" ? err : {};
-
   // render the error page
   res.status(err.status || 500);
   res.render("error");
 });
 
+app.use(errorHandlers.flashValidationErrors);
 module.exports = app;

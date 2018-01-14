@@ -19,11 +19,6 @@ const adminSchema = new mongoose.Schema({
     required: "Please supply a name",
     trim: true
   }
-  // username: {
-  //   type: String,
-  //   required: "Please supply a username",
-  //   trim: true
-  // }
 });
 
 adminSchema.plugin(passportLocalMongoose);

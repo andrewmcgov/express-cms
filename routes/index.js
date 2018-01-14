@@ -27,12 +27,9 @@ router.get("/register", adminController.registerForm);
 
 router.post(
   "/register",
-  // validate registration data
   adminController.validateAdmin,
-  // register the user
-  adminController.register
-  // log the user in
-  //authController.login
+  adminController.register,
+  authController.login
 );
 
 module.exports = router;
