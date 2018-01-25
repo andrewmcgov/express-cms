@@ -3,3 +3,10 @@ extends layout
 block content
   h1= title
   p Welcome to the admin home
+
+  p
+    if user
+      a.btn(href="/logout") Logout
+    else
+      a.btn(href="/login") Login 
+      a.btn(href="/register") - Register
