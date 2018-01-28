@@ -4,8 +4,7 @@
   "private": true,
   "scripts": {
     "watch": "nodemon ./bin/www",
-    "start":
-      "concurrently \"npm run watch\" \"npm run assets\" --names \"🖥,📦\"",
+    "start": "concurrently \"npm run watch\" \"npm run assets\" --names \"🖥,📦\"",
     "assets": "webpack"
   },
   "dependencies": {

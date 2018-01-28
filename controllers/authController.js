@@ -14,7 +14,7 @@ exports.login = passport.authenticate("local", {
 
 exports.logout = (req, res) => {
   req.logout();
-  //req.flash("success", "You are logged out");
+  req.flash("success", "You are logged out");
   res.redirect("/");
 };
 
@@ -24,6 +24,6 @@ exports.isLoggedIn = (req, res, next) => {
     next(); // carry on! They are logged in!
     return;
   }
-  // req.flash("error", "Oops you must be logged in to do that!");
+  req.flash("error", "Oops you must be logged in to do that!");
   res.redirect("/login");
 };

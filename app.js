@@ -16,6 +16,7 @@ const index = require("./routes/index");
 const users = require("./routes/users");
 const errorHandlers = require("./handlers/errorHandlers");
 require("./handlers/passport");
+const helpers = require('./helpers')
 const app = express();
 
 // view engine setup
@@ -30,8 +31,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/", index);
-app.use("/users", users);
 
 app.use(expressValidator());
 app.use(cookieParser());
@@ -49,9 +48,15 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
-app.use(function(req, res, next) {
-  res.locals.flash = req.flash();
+app.use((req, res, next) => {
+  res.locals.h = helpers;
+  res.locals.flashes = req.flash();
+  next();
 });
+
+app.use("/", index);
+
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   req.login = promisify(req.login, req);
