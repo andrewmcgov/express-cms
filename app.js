@@ -15,8 +15,11 @@ const logger = require("morgan");
 const index = require("./routes/index");
 const users = require("./routes/users");
 const errorHandlers = require("./handlers/errorHandlers");
-require("./handlers/passport");
 const helpers = require('./helpers')
+require("./handlers/passport");
+
+// Create the express app
+
 const app = express();
 
 // view engine setup
@@ -51,6 +54,7 @@ app.use(flash());
 app.use((req, res, next) => {
   res.locals.h = helpers;
   res.locals.flashes = req.flash();
+  res.locals.user = req.user || null;
   next();
 });
 

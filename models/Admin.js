@@ -21,7 +21,7 @@ const adminSchema = new mongoose.Schema({
   }
 });
 
-adminSchema.plugin(passportLocalMongoose);
+adminSchema.plugin(passportLocalMongoose, { usernameField: 'email' });
 adminSchema.plugin(mongodbErrorHandler);
 
 module.exports = mongoose.model("Admin", adminSchema);

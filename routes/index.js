@@ -13,7 +13,7 @@ router.get("/about", function(req, res, next) {
   res.render("page", { title: "About" });
 });
 
-router.get("/admin", postController.loadAdmin);
+router.get("/admin", authController.isLoggedIn, postController.loadAdmin);
 
 router.get("/admin/new-post", postController.addPost);
 
@@ -22,6 +22,8 @@ router.post("/admin/new-post", catchErrors(postController.writePost));
 router.get("/posts/:slug", catchErrors(postController.singlePost));
 
 router.get("/login", adminController.loginForm);
+
+router.get("/logout", authController.logout);
 
 router.get("/register", adminController.registerForm);
 
