@@ -14,13 +14,27 @@ exports.addPost = (req, res) => {
 };
 
 exports.writePost = async (req, res) => {
+  req.body.author = req.user._id;
   const post = await new Post(req.body).save();
   res.redirect("/admin");
 };
 
+const confirmOwner = (post, admin) => {
+  if (!post.author.equals(admin._id)) {
+    throw Error('You must be the author of the post to edit it!');
+  }
+} 
+
+exports.editPost = async (req, res) => {
+  // Find the right store to edit 
+  const post = await Post.findOne({ slug: req.params.slug })
+  // ensure that the user is tha author of the post
+  confirmOwner(post, req.user);
+  res.render('adminEditPost', { title: 'Edit Post', post});
+};
+
 exports.singlePost = async (req, res) => {
-  console.log("singlePost runs");
-  const post = await Post.findOne({ slug: req.params.slug });
+  const post = await Post.findOne({ slug: req.params.slug }).populate('author');
 
   if (!post) return next();
   res.render("singlePost", { post, title: post.title });

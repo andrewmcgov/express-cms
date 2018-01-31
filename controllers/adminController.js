@@ -28,11 +28,7 @@ exports.validateAdmin = [
 ];
 
 exports.register = async (req, res, next) => {
-  const admin = new Admin({
-    username: req.body.email,
-    name: req.body.name,
-    email: req.body.email
-  });
+  const admin = new Admin({ email: req.body.email, name: req.body.name, });
   const register = promisify(Admin.register, Admin);
   await register(admin, req.body.password);
   next();
