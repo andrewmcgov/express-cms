@@ -22,7 +22,12 @@ const postSchema = new mongoose.Schema({
     type: String,
     required: "Please add some content"
   },
-  preview: String
+  preview: String,
+  author: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'Admin',
+    required: 'You must supply an author!'
+  }
 });
 
 // do some stuff before we save the post

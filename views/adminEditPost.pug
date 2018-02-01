@@ -1,0 +1,7 @@
+extends layout
+
+include mixins/_postForm
+
+block content
+    h2 Edit #{post.title}
+    +postForm(post)

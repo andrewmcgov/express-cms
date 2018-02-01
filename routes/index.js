@@ -13,26 +13,32 @@ router.get("/about", function(req, res, next) {
   res.render("page", { title: "About" });
 });
 
-router.get("/admin", postController.loadAdmin);
+router.get("/admin", authController.isLoggedIn, postController.loadAdmin);
 
 router.get("/admin/new-post", postController.addPost);
-
 router.post("/admin/new-post", catchErrors(postController.writePost));
+
+router.get("/admin/posts/:slug/edit", catchErrors(postController.editPost));
+router.post(
+  "/admin/new-post/:slug/:id/edit",
+  catchErrors(postController.updatePost)
+);
 
 router.get("/posts/:slug", catchErrors(postController.singlePost));
 
 router.get("/login", adminController.loginForm);
 
+router.get("/logout", authController.logout);
+
 router.get("/register", adminController.registerForm);
 
 router.post(
   "/register",
-  // validate registration data
   adminController.validateAdmin,
-  // register the user
-  adminController.register
-  // log the user in
-  //authController.login
+  adminController.register,
+  authController.login
 );
+
+router.post("/login", authController.login);
 
 module.exports = router;
