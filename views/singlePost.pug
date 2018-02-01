@@ -3,9 +3,9 @@ extends layout
 block content
   h2= title
   p Written by #{ post.author ? post.author.name : 'Unknown'}
-  if user && post.author.id == user._id 
-    p 
+  if user && post.author.id == user._id
+    p
       a(href=`/admin/posts/${post.slug}/edit`) Click here to edit this post
-  
+
   .content
-    div= post.content
+    != post.content

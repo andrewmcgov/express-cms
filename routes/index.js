@@ -17,7 +17,12 @@ router.get("/admin", authController.isLoggedIn, postController.loadAdmin);
 
 router.get("/admin/new-post", postController.addPost);
 router.post("/admin/new-post", catchErrors(postController.writePost));
-router.get('/admin/posts/:slug/edit', catchErrors(postController.editPost));
+
+router.get("/admin/posts/:slug/edit", catchErrors(postController.editPost));
+router.post(
+  "/admin/new-post/:slug/:id/edit",
+  catchErrors(postController.updatePost)
+);
 
 router.get("/posts/:slug", catchErrors(postController.singlePost));
 
@@ -34,6 +39,6 @@ router.post(
   authController.login
 );
 
-router.post("/login", authController.login)
+router.post("/login", authController.login);
 
 module.exports = router;
