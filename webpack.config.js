@@ -1,17 +1,37 @@
 const path = require("path");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const webpack = require("webpack");
+// create multiple instances
+const extractAdminCSS = new ExtractTextPlugin("admin-style.css");
+const extractMainCSS = new ExtractTextPlugin("style.css");
+const extractMceCSS = new ExtractTextPlugin("mce-style.css");
 
-module.exports = {
-  entry: "./public/javascripts/scripts.js",
+const extractCommons = new webpack.optimize.CommonsChunkPlugin({
+  name: "commons",
+  filename: "commons.js"
+});
+
+const config = {
+  entry: {
+    app: "./public/javascripts/scripts.js",
+    admin: "./public/javascripts/admin.js"
+  },
   output: {
-    filename: "bundle.js",
+    filename: "[name].bundle.js",
     path: path.resolve(__dirname, "./public/dist")
   },
   module: {
     rules: [
       {
-        test: /\.scss$/,
-        use: ExtractTextPlugin.extract({
+        test: /\.admin.scss$/,
+        use: extractAdminCSS.extract({
+          use: ["css-loader", "sass-loader"],
+          fallback: "style-loader"
+        })
+      },
+      {
+        test: /\.public.scss$/,
+        use: extractMainCSS.extract({
           use: ["css-loader", "sass-loader"],
           fallback: "style-loader"
         })
@@ -22,7 +42,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ExtractTextPlugin.extract({
+        use: extractAdminCSS.extract({
           use: ["css-loader"],
           fallback: "style-loader"
         })
@@ -77,8 +97,10 @@ module.exports = {
       }
     ]
   },
-  plugins: [new ExtractTextPlugin("style.css")],
+  plugins: [extractMainCSS, extractAdminCSS],
   watch: true
 };
 
 process.noDeprecation = true;
+
+module.exports = config;
