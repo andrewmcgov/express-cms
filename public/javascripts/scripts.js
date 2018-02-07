@@ -1,6 +1,4 @@
-import buildTinyMce from "./modules/tinymce";
-require("../stylesheets/style.scss");
+require("../stylesheets/style.public.scss");
+require("../stylesheets/style.admin.scss");
 
-const tinyDiv = document.querySelector("#tinymce");
-console.log(tinyDiv);
-buildTinyMce(tinyDiv);
+console.log("scripts.js");

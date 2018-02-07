@@ -60,30 +60,32 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ([
-/* 0 */
+/* 0 */,
+/* 1 */,
+/* 2 */,
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _tinymce = __webpack_require__(1);
+var _tinymce = __webpack_require__(4);
 
 var _tinymce2 = _interopRequireDefault(_tinymce);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-__webpack_require__(11);
-
 var tinyDiv = document.querySelector("#tinymce");
-console.log(tinyDiv);
 (0, _tinymce2.default)(tinyDiv);
 
+console.log("admin.js");
+
 /***/ }),
-/* 1 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -93,17 +95,17 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _tinymce = __webpack_require__(2);
+var _tinymce = __webpack_require__(5);
 
 var _tinymce2 = _interopRequireDefault(_tinymce);
 
-__webpack_require__(7);
-
-__webpack_require__(8);
-
-__webpack_require__(9);
-
 __webpack_require__(10);
+
+__webpack_require__(11);
+
+__webpack_require__(12);
+
+__webpack_require__(13);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -122,7 +124,7 @@ function buildTinyMce(tinyDiv) {
 exports.default = buildTinyMce;
 
 /***/ }),
-/* 2 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(setImmediate) {/*** IMPORTS FROM imports-loader ***/
@@ -44532,10 +44534,10 @@ dem('tinymce.core.api.Main')();
 /*** EXPORTS FROM exports-loader ***/
 module.exports = window.tinymce;
 }.call(window));
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6).setImmediate))
 
 /***/ }),
-/* 3 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var apply = Function.prototype.apply;
@@ -44588,13 +44590,13 @@ exports._unrefActive = exports.active = function(item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(4);
+__webpack_require__(7);
 exports.setImmediate = setImmediate;
 exports.clearImmediate = clearImmediate;
 
 
 /***/ }),
-/* 4 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -44784,10 +44786,10 @@ exports.clearImmediate = clearImmediate;
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5), __webpack_require__(6)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8), __webpack_require__(9)))
 
 /***/ }),
-/* 5 */
+/* 8 */
 /***/ (function(module, exports) {
 
 var g;
@@ -44814,7 +44816,7 @@ module.exports = g;
 
 
 /***/ }),
-/* 6 */
+/* 9 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -45004,7 +45006,7 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 7 */
+/* 10 */
 /***/ (function(module, exports) {
 
 /*** IMPORTS FROM imports-loader ***/
@@ -63325,7 +63327,7 @@ dem('tinymce.themes.modern.Theme')();
 }.call(window));
 
 /***/ }),
-/* 8 */
+/* 11 */
 /***/ (function(module, exports) {
 
 /*** IMPORTS FROM imports-loader ***/
@@ -66270,7 +66272,7 @@ dem('tinymce.plugins.paste.Plugin')();
 }.call(window));
 
 /***/ }),
-/* 9 */
+/* 12 */
 /***/ (function(module, exports) {
 
 /*** IMPORTS FROM imports-loader ***/
@@ -67511,7 +67513,7 @@ dem('tinymce.plugins.link.Plugin')();
 }.call(window));
 
 /***/ }),
-/* 10 */
+/* 13 */
 /***/ (function(module, exports) {
 
 /*** IMPORTS FROM imports-loader ***/
@@ -67970,12 +67972,6 @@ dem('tinymce.plugins.autoresize.Plugin')();
 })();
 
 }.call(window));
-
-/***/ }),
-/* 11 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);
