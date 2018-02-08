@@ -26,19 +26,19 @@ router.post(
 
 router.get("/posts/:slug", catchErrors(postController.singlePost));
 
-router.get("/login", adminController.loginForm);
+router.get("/admin/login", adminController.loginForm);
 
-router.get("/logout", authController.logout);
+router.get("/admin/logout", authController.logout);
 
-router.get("/register", adminController.registerForm);
+router.get("/admin/register", adminController.registerForm);
 
 router.post(
-  "/register",
+  "/admin/register",
   adminController.validateAdmin,
   adminController.register,
   authController.login
 );
 
-router.post("/login", authController.login);
+router.post("/admin/login", authController.login);
 
 module.exports = router;

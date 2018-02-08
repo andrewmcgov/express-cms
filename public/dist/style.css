@@ -6,3 +6,13 @@ body {
 a {
   color: #1e1e1e;
   font-size: 10px; }
+
+ul {
+  list-style-type: none; }
+
+nav ul {
+  padding-left: 0; }
+
+.nav__item {
+  display: inline-block;
+  padding: 5px 10px 5px 0; }

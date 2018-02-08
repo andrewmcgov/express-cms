@@ -5,11 +5,11 @@ const { body, validationResult, check } = require("express-validator/check");
 const { sanitizeBody } = require("express-validator/filter");
 
 exports.loginForm = (req, res) => {
-  res.render("login", { title: "login" });
+  res.render("adminLogin", { title: "login" });
 };
 
 exports.registerForm = (req, res) => {
-  res.render("register", { title: "register" });
+  res.render("adminRegister", { title: "register" });
 };
 
 // the methods on the req come from: https://github.com/ctavan/express-validator

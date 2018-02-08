@@ -1,12 +1,19 @@
 const mongoose = require("mongoose");
 const Post = mongoose.model("Post");
 
+async function getPostsByAuthor(id) {
+  const posts = await Post.find({ author: id });
+  return posts;
+}
+
 exports.loadIndex = async (req, res) => {
   const posts = await Post.find();
   res.render("index", { title: "Our CMS", posts });
 };
-exports.loadAdmin = (req, res) => {
-  res.render("adminHome", { title: "Welcome, Admin" });
+
+exports.loadAdmin = async (req, res) => {
+  const posts = await Post.find({ author: req.user._id });
+  res.render("adminHome", { title: "Welcome, Admin", posts });
 };
 
 exports.addPost = (req, res) => {
@@ -41,6 +48,7 @@ exports.updatePost = async (req, res) => {
   req.flash("success", `Successfully updated ${post.title}`);
   res.redirect(`/posts/${post.slug}`);
 };
+
 exports.singlePost = async (req, res) => {
   const post = await Post.findOne({ slug: req.params.slug }).populate("author");
 

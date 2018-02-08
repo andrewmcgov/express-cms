@@ -1,0 +1,6 @@
+mixin adminListPosts(posts)
+  for post in posts
+    h3= post.title 
+    a.edit__link(href=`/admin/posts/${post.slug}/edit`) Edit Post
+    div
+      != post.content

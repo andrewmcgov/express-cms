@@ -2,14 +2,14 @@ doctype html
 html
   head
     title= title
-    link(rel='stylesheet', href='/dist/style.css')
-    script(src="/dist/app.bundle.js" defer)
+    link(rel='stylesheet', href='/dist/admin-style.css')
+    script(src="/dist/admin.bundle.js" defer)
   body
 
   header 
     nav
       ul 
-        each item in h.frontMenu
+        each item in h.adminMenu
           li.nav__item
             a.nav__link(href=item.slug) #{item.title}
 
@@ -24,5 +24,3 @@ html
               button.flash__remove(onClick="this.parentElement.remove()") &times;
 
     block content
-
-    a(href="/admin") Admin Home
