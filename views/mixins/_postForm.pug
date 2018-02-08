@@ -1,5 +1,5 @@
 mixin postForm(post = {})
-		form#post(action=`/admin/new-post/${post.slug +'/' || ''}${post._id || '' }/edit` method="POST")
+		form#post(action=`/admin/new-post/${post.slug ? post.slug +'/' : ''}${ post._id ? post._id : '' }${ post.slug ? '/edit' : ''}` method="POST")
 			label(for="title") Title
 			input(type="text" name="title" value=post.title)
 			label(for="tags") Tags
