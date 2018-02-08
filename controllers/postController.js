@@ -1,11 +1,6 @@
 const mongoose = require("mongoose");
 const Post = mongoose.model("Post");
 
-async function getPostsByAuthor(id) {
-  const posts = await Post.find({ author: id });
-  return posts;
-}
-
 exports.loadIndex = async (req, res) => {
   const posts = await Post.find();
   res.render("index", { title: "Our CMS", posts });
