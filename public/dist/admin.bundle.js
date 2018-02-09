@@ -79,6 +79,7 @@ var _tinymce2 = _interopRequireDefault(_tinymce);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+//const foundation = require("./modules/foundation/entries/foundation.js")
 var tinyDiv = document.querySelector("#tinymce");
 (0, _tinymce2.default)(tinyDiv);
 
