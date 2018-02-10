@@ -34,4 +34,4 @@ npm-debug.log
 variables.env
 
 # Dist files
-./public/dist/*
+public/dist/

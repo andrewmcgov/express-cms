@@ -2,13 +2,16 @@ doctype html
 html
   head
     title= title
+    <!-- Compressed CSS -->
+
     link(rel='stylesheet', href='/dist/admin-style.css')
+    script(src='http://code.jquery.com/jquery-3.3.1.min.js')
     script(src="/dist/admin.bundle.js" defer)
   body
 
-  header 
+  header
     nav
-      ul 
+      ul
         each item in h.adminMenu
           li.nav__item
             a.nav__link(href=item.slug) #{item.title}

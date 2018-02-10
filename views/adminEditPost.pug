@@ -3,5 +3,7 @@ extends adminLayout
 include mixins/_postForm
 
 block content
-    h2 Edit #{post.title}
+    div(class='grid-container')
+        div(class='grid-x grid-y')
+            h2 Edit #{post.title}
     +postForm(post)

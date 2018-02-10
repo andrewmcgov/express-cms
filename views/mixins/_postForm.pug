@@ -1,8 +1,12 @@
 mixin postForm(post = {})
-		form#post(action=`/admin/new-post/${post.slug ? post.slug +'/' : ''}${ post._id ? post._id : '' }${ post.slug ? '/edit' : ''}` method="POST")
-			label(for="title") Title
-			input(type="text" name="title" value=post.title)
-			label(for="tags") Tags
-			input(type="text" name="tags" value=post.tags)
-			textarea#tinymce(name="content" type="hidden")= post.content
-			input(type="submit" value="save")
+	div(class='grid-container')
+		div(class='grid-x grid-y')
+			form#post(action=`/admin/new-post/${post.slug ? post.slug +'/' : ''}${ post._id ? post._id : '' }${ post.slug ? '/edit' : ''}` method="POST")
+				label(for='title') Title
+				input(type='text' name='title' value=post.title placeholder='Add a descriptive title')
+				label(for='tags') Tags
+				input(type='text' name='tags' value=post.tags placeholder='Add tags here, seperated by commas')
+				textarea#tinymce(name="content" type="hidden" placeholder='Write your post here, use the RTE to style your content.')= post.content
+				div(class='grid-x grid-y align-top')
+					<hr>
+					input(type='submit' value='Save' class='button medium')
