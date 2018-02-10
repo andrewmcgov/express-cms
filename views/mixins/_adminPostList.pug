@@ -1,6 +1,10 @@
 mixin adminListPosts(posts)
   for post in posts
-    h3= post.title 
-    a.edit__link(href=`/admin/posts/${post.slug}/edit`) Edit Post
-    div
-      != post.content
+    div(class='card')
+      div(class='card-divider grid-x')
+        div(class='cell medium-8 large-8')
+          h5= post.title
+        div(class='cell medium-4 large-4 medium-text-right')
+          a.edit__link(href=`/admin/posts/${post.slug}/edit`) Edit Post
+      div(class='card-section')
+        != post.content

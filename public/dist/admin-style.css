@@ -8186,24 +8186,3 @@ a.thumbnail {
     flex-direction: column; }
   .large-flex-dir-column-reverse {
     flex-direction: column-reverse; } }
-
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  color: #000;
-  background: #d8d8d8; }
-
-ul {
-  list-style-type: none; }
-
-a {
-  color: #000; }
-  a:hover {
-    color: #414141; }
-
-nav ul {
-  padding-left: 0; }
-
-.nav__item {
-  display: inline-block;
-  padding: 5px 10px 5px 0; }
