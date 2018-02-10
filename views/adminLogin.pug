@@ -2,8 +2,9 @@ extends adminLayout
 
 include mixins/_loginForm
 block content
-  h1= title
-  +loginForm()
+  div(class='grid-container')
+    h1= title
+    +loginForm()
 
-  p Dont have an account? Register 
+  p Dont have an account? Register
     a(href="/register") here!
