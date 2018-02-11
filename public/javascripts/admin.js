@@ -1,6 +1,9 @@
-import buildTinyMce from "./modules/tinymce";
-import Foundation from "./modules/foundation";
-const tinyDiv = document.querySelector("#tinymce");
+import buildTinyMce from './modules/tinymce';
+import Foundation from './modules/foundation';
+
+const tinyDiv = document.querySelector('#tinymce');
 buildTinyMce(tinyDiv);
 
-console.log("admin.js");
+$(document).foundation();
+
+console.log('admin.js');

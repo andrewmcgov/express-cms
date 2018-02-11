@@ -1,6 +1,7 @@
 doctype html
 html
   head
+    meta(name='viewport' content='width=device-width', initial-scale=1)
     title= title
     <!-- Compressed CSS -->
 
@@ -8,25 +9,35 @@ html
     script(src='http://code.jquery.com/jquery-3.3.1.min.js')
     script(src="/dist/admin.bundle.js" defer)
   body
+  
+  div(data-sticky-container)
+    div(data-sticky data-margin-top=0)
+      div(class='top-bar grid-x hide-for-small-only sticky')
+        div(class='top-bar-left')
+          span Express CMS
+        div(class='top-bar-right')
+          span #{ user ? user.name : '' }
 
-  header
-    nav
-      ul
+  div(class='grid-x')
+    
+    div(class='cell medium-2 large-2')
+      ul(class='vertical menu')
         each item in h.adminMenu
           li.nav__item
             a.nav__link(href=item.slug) #{item.title}
 
-  block messages
-    if locals.flashes
-      div(class='grid-container')
-        div(class='flash-messages' data-closable)
-          - const categories = Object.keys(locals.flashes)
-          each category in categories
-            each message in flashes[category]
-              .flash(class=`callout ${category}`)
-                p.flash__text!= message
-                  button(class='close-button' aria-label='Dismiss alert' type='button' data-close)
-                    span(aria-hidden='true') &times;
+    div(class='cell medium-10 large-10')
 
+      block messages
+        if locals.flashes
+          div(class='grid-container')
+            div(class='flash-messages' data-closable)
+              - const categories = Object.keys(locals.flashes)
+              each category in categories
+                each message in flashes[category]
+                  .flash(class=`callout ${category}`)
+                    p.flash__text!= message
+                      button(class='close-button' aria-label='Dismiss alert' type='button' data-close)
+                        span(aria-hidden='true') &times;
 
-    block content
+        block content
