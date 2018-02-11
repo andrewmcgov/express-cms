@@ -1,4 +1,4 @@
-require("../stylesheets/style.public.scss");
-require("../stylesheets/style.admin.scss");
+require('../stylesheets/style.public.scss');
+require('../stylesheets/style.admin.scss');
 
-console.log("scripts.js");
+console.log('scripts.js');

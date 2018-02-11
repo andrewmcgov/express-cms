@@ -6,8 +6,7 @@ html
     <!-- Compressed CSS -->
 
     link(rel='stylesheet', href='/dist/admin-style.css')
-    script(src='http://code.jquery.com/jquery-3.3.1.min.js')
-    script(src="/dist/admin.bundle.js" defer)
+
   body
   
   div(data-sticky-container)
@@ -20,11 +19,12 @@ html
 
   div(class='grid-x')
     
-    div(class='cell medium-2 large-2')
-      ul(class='vertical menu')
-        each item in h.adminMenu
-          li.nav__item
-            a.nav__link(href=item.slug) #{item.title}
+    div(class='cell medium-2 large-2 hide-for-small-only' data-sticky-container)
+      div(data-sticky data-margin-top=3)
+        ul(class='vertical menu')
+          each item in h.adminMenu
+            li.nav__item
+              a.nav__link(href=item.slug) #{item.title}
 
     div(class='cell medium-10 large-10')
 
@@ -41,3 +41,7 @@ html
                         span(aria-hidden='true') &times;
 
         block content
+
+    script(src='http://code.jquery.com/jquery-3.3.1.min.js')
+    script(src="/dist/adminvendors.bundle.js" defer)
+    script(src="/dist/admin.bundle.js" defer)
