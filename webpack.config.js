@@ -6,11 +6,6 @@ const extractAdminCSS = new ExtractTextPlugin('admin-style.css');
 const extractMainCSS = new ExtractTextPlugin('style.css');
 const extractMceCSS = new ExtractTextPlugin('mce-style.css');
 
-// const extractCommons = new webpack.optimize.CommonsChunkPlugin({
-//   name: 'commons',
-//   filename: 'commons.js'
-// });
-
 const config = {
   entry: {
     app: './public/javascripts/scripts.js',

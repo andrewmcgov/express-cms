@@ -2624,11 +2624,11 @@ i.mce-i-resize {
 
 @font-face {
   font-family: "tinymce";
-  src: url("/dist/fonts/tinymce.eot");
-  src: url("/dist/fonts/tinymce.eot?#iefix") format("embedded-opentype"),
-    url("/dist/fonts/tinymce.woff") format("woff"),
-    url("/dist/fonts/tinymce.ttf") format("truetype"),
-    url("/dist/fonts/tinymce.svg#tinymce") format("svg");
+  src: url("../fonts/tinymce.eot");
+  src: url("../fonts/tinymce.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/tinymce.woff") format("woff"),
+    url("../fonts/tinymce.ttf") format("truetype"),
+    url("../fonts/tinymce.svg#tinymce") format("svg");
   font-weight: normal;
   font-style: normal;
 }

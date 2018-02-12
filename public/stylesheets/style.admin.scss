@@ -9,3 +9,24 @@ $offWhite: #f4f4f4;
   background: $darkGrey;
   color: $offWhite;
 }
+
+.main-content {
+  margin-top: 20px;
+}
+
+.admin-sidebar--container {
+  background: $medium-gray;
+}
+
+.admin-sidebar {
+  height: 100vh;
+  background: $medium-gray;
+}
+
+.mobile-nav--container {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: $darkGrey;
+  color: $offWhite;
+}
