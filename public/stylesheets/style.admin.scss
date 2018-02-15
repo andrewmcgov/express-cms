@@ -27,6 +27,21 @@ $offWhite: #f4f4f4;
   position: fixed;
   bottom: 0;
   width: 100%;
-  background: $darkGrey;
-  color: $offWhite;
+  .accordion-title {
+    background: $darkGrey;
+    color: $offWhite;
+  }
+  .accordion-content,
+  .accordion-content:last-child {
+    border: none;
+  }
+  .mobile-nav {
+    list-style-type: none;
+  }
+}
+
+@include breakpoint(small only) {
+  body {
+    border-top: 4px solid $darkGrey;
+  }
 }

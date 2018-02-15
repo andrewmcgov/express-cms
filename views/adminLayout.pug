@@ -49,10 +49,10 @@ html
           block content
 
     div(class='mobile-nav--container show-for-small-only grid-x')
-      div(class='cell')
-        p Menu
-
-      ul(mobile-nav)
-        each item in h.adminMenu
-          li.nav__item
-            a.nav__link(href=item.slug) #{item.title}
+      div(class='cell accordion' data-accordion data-allow-all-closed="true")
+        div(class='accordian-item' data-accordion-item)
+          a(href="#" class='accordion-title') Menu
+          ul(class='accordion-content mobile-nav' data-tab-content)
+            each item in h.adminMenu
+              li.nav__item
+                a.nav__link(href=item.slug) #{item.title}
