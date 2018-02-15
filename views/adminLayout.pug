@@ -1,32 +1,58 @@
 doctype html
 html
   head
+    meta(name='viewport' content='width=device-width', initial-scale=1)
     title= title
     <!-- Compressed CSS -->
 
     link(rel='stylesheet', href='/dist/admin-style.css')
     script(src='http://code.jquery.com/jquery-3.3.1.min.js')
+    script(src="/dist/adminvendors.bundle.js" defer)
     script(src="/dist/admin.bundle.js" defer)
+
   body
+  
+    div(data-sticky-container)
+      div(data-sticky data-margin-top=0)
+        div(class='top-bar grid-x hide-for-small-only sticky')
+          div(class='top-bar-left')
+            span Express CMS
+          div(class='top-bar-right')
+            span #{ user ? user.name : '' }
 
-  header
-    nav
-      ul
-        each item in h.adminMenu
-          li.nav__item
-            a.nav__link(href=item.slug) #{item.title}
+    div(class='grid-x')
 
-  block messages
-    if locals.flashes
-      div(class='grid-container')
-        div(class='flash-messages' data-closable)
-          - const categories = Object.keys(locals.flashes)
-          each category in categories
-            each message in flashes[category]
-              .flash(class=`callout ${category}`)
-                p.flash__text!= message
-                  button(class='close-button' aria-label='Dismiss alert' type='button' data-close)
-                    span(aria-hidden='true') &times;
+      div(class='admin-sidebar--container cell medium-2 large-2 hide-for-small-only' data-sticky-container)
+        div(data-sticky data-margin-top=3)
+          div(class='admin-sidebar')
+            ul(class='vertical menu')
+              each item in h.adminMenu
+                li.nav__item
+                  a.nav__link(href=item.slug) #{item.title}
 
+      div(class='cell medium-10 large-10')
 
-    block content
+        div(class='grid-container main-content')
+
+          block messages
+            if locals.flashes
+              div(class='grid-container')
+                div(class='flash-messages' data-closable)
+                  - const categories = Object.keys(locals.flashes)
+                  each category in categories
+                    each message in flashes[category]
+                      .flash(class=`callout ${category}`)
+                        p.flash__text!= message
+                          button(class='close-button' aria-label='Dismiss alert' type='button' data-close)
+                            span(aria-hidden='true') &times;
+
+          block content
+
+    div(class='mobile-nav--container show-for-small-only grid-x')
+      div(class='cell accordion' data-accordion data-allow-all-closed="true")
+        div(class='accordian-item' data-accordion-item)
+          a(href="#" class='accordion-title') Menu
+          ul(class='accordion-content mobile-nav' data-tab-content)
+            each item in h.adminMenu
+              li.nav__item
+                a.nav__link(href=item.slug) #{item.title}

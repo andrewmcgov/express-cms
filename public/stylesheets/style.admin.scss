@@ -1,27 +1,47 @@
 @import "./skins/lightgray/skin.min.css";
 @import "~foundation-sites/assets/foundation.scss";
 
-// body {
-//   padding: 50px;
-//   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-//   color: #000;
-//   background: #d8d8d8;
-// }
-// ul {
-//   list-style-type: none;
-// }
-// a {
-//   color: #000;
-//   &:hover {
-//     color: rgb(65, 65, 65);
-//   }
-// }
-// nav ul {
-//   padding-left: 0;
-// }
+// Colors
+$darkGrey: #333333;
+$offWhite: #f4f4f4;
 
-// // Temp styles
-// .nav__item {
-//   display: inline-block;
-//   padding: 5px 10px 5px 0;
-// }
+.top-bar {
+  background: $darkGrey;
+  color: $offWhite;
+}
+
+.main-content {
+  margin-top: 20px;
+}
+
+.admin-sidebar--container {
+  background: $medium-gray;
+}
+
+.admin-sidebar {
+  height: 100vh;
+  background: $medium-gray;
+}
+
+.mobile-nav--container {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  .accordion-title {
+    background: $darkGrey;
+    color: $offWhite;
+  }
+  .accordion-content,
+  .accordion-content:last-child {
+    border: none;
+  }
+  .mobile-nav {
+    list-style-type: none;
+  }
+}
+
+@include breakpoint(small only) {
+  body {
+    border-top: 4px solid $darkGrey;
+  }
+}
