@@ -25,14 +25,14 @@ exports.isLoggedIn = (req, res, next) => {
     next(); // carry on! They are logged in!
     return;
   }
-  req.flash('error', 'Oops you must be logged in to do that!');
+  req.flash('alert', 'Oops you must be logged in to do that!');
   res.redirect('/admin/login');
 };
 
 exports.forgotPassword = async (req, res) => {
   const admin = await Admin.findOne({ email: req.body.email });
   if (!admin) {
-    req.flash('error', "Whoops, that wasn't what we were expecting");
+    req.flash('alert', "Whoops, that wasn't what we were expecting");
     return res.redirect('/login');
   }
   admin.resetPasswordToken = crypto.randomBytes(20).toString('hex');
@@ -57,7 +57,7 @@ exports.resetPassword = async (req, res) => {
     resetPasswordExpires: { $gt: Date.now() }
   });
   if (!admin) {
-    req.flash('error', 'Password reset failed or link has expired');
+    req.flash('alert', 'Password reset failed or link has expired');
     return res.redirect('/login');
   }
   res.render('reset', { title: 'Reset your password' });
@@ -67,7 +67,7 @@ exports.confirmedPasswords = (req, res, next) => {
   if (req.body.password === req.body['password-confirm']) {
     next();
   }
-  req.flash('error', 'Passwords do not match!');
+  req.flash('alert', 'Passwords do not match!');
   res.redirec('back');
 };
 
@@ -78,7 +78,7 @@ exports.update = async (req, res) => {
   });
 
   if (!user) {
-    req.flash('error', 'Password reset is invalid or has expired');
+    req.flash('alert', 'Password reset is invalid or has expired');
     return res.redirect('/login');
   }
 
