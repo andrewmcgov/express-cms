@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const User = mongoose.model('Admin');
 const promisify = require('es6-promisify');
 const Admin = mongoose.model('Admin');
+const mail = require('../handlers/mail');
 
 exports.login = passport.authenticate('local', {
   failureRedirect: '/login',
@@ -30,6 +31,7 @@ exports.isLoggedIn = (req, res, next) => {
 };
 
 exports.forgotPassword = async (req, res) => {
+  console.log('forgot password');
   const admin = await Admin.findOne({ email: req.body.email });
   if (!admin) {
     req.flash('alert', "Whoops, that wasn't what we were expecting");
@@ -39,46 +41,56 @@ exports.forgotPassword = async (req, res) => {
   admin.resetPasswordExpires = Date.now() + 3600000; // 1 hour from now
   await admin.save();
 
-  const resetURL = `http://${req.headers.host}/account/reset/${
+  const resetURL = `http://${req.headers.host}/admin/reset/${
     admin.resetPasswordToken
   }`;
-  // await MediaList.send({
-  //   admin,
-  //   filename: 'password-reset',
-  //   subject: 'Express CMS password update',
-  //   resetURL
-  // });
-  req.flash('success', `You have been emailed a password link: ${resetURL}`);
+  await mail.send({
+    admin,
+    filename: 'password-reset',
+    subject: 'Express CMS password update',
+    resetURL
+  });
+  // req.flash('success', `You have been emailed a password link: ${resetURL}`);
+  res.redirect('/admin/reset');
 };
 
 exports.resetPassword = async (req, res) => {
-  const admin = await admin.find({
-    resetPasswordtoke: req.params.token,
+  console.log(req.params);
+  const admin = await Admin.findOne({
+    resetPasswordToken: req.params.token,
     resetPasswordExpires: { $gt: Date.now() }
   });
   if (!admin) {
-    req.flash('alert', 'Password reset failed or link has expired');
+    req.flash(
+      'alert',
+      'Password reset failed or link has expired - fails at reset'
+    );
     return res.redirect('/login');
   }
-  res.render('reset', { title: 'Reset your password' });
+  res.render('resetPassword', { title: 'Reset your password' });
 };
 
 exports.confirmedPasswords = (req, res, next) => {
   if (req.body.password === req.body['password-confirm']) {
     next();
+    return;
   }
+  console.log('confirmed passwords passes');
   req.flash('alert', 'Passwords do not match!');
-  res.redirec('back');
+  res.redirect('back');
 };
 
 exports.update = async (req, res) => {
   const admin = await Admin.findOne({
-    resetPasswordtoken: req.params.token,
-    resetPasswordExpires: { $gr: Date.now() }
+    resetPasswordToken: req.params.token,
+    resetPasswordExpires: { $gt: Date.now() }
   });
 
-  if (!user) {
-    req.flash('alert', 'Password reset is invalid or has expired');
+  if (!admin) {
+    req.flash(
+      'alert',
+      'Password reset is invalid or has expired - fails at update'
+    );
     return res.redirect('/login');
   }
 
@@ -87,7 +99,14 @@ exports.update = async (req, res) => {
   admin.resetPasswordToken = undefined;
   admin.resetPasswordExpires = undefined;
   const updatedAdmin = await admin.save();
-  await requestAnimationFrame.login(updatedUser);
-  req.flash('success', 'Password has been reset and you are logged in');
-  res.redirect('/admin');
+  //await req.login(updatedAdmin);
+  req.login(updatedAdmin, err => {
+    if (err) {
+      req.flash('Something went wrong. Please try again');
+      res.redirect('/admin/login');
+      return;
+    }
+    req.flash('success', 'Password has been reset, you are now logged in');
+    res.redirect('/admin/');
+  });
 };

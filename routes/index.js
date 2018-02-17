@@ -42,5 +42,20 @@ router.post(
 
 router.post('/admin/login', authController.login);
 
-router.get('/admin/forgot', catchErrors(authController.forgotPassword));
+router.get('/admin/forgot', function(req, res, next) {
+  res.render('forgot', { title: 'Reset Password' });
+});
+
+router.post('/admin/forgot', catchErrors(authController.forgotPassword));
+
+router.get('/admin/reset/:token', catchErrors(authController.resetPassword));
+
+router.post(
+  '/admin/reset/:token',
+  authController.confirmedPasswords,
+  catchErrors(authController.update)
+);
+
+router.post('admin/reset');
+
 module.exports = router;
