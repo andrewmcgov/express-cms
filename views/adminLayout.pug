@@ -18,12 +18,20 @@ html
           div(class='top-bar-left')
             span Express CMS
           div(class='top-bar-right')
-            span #{ user ? user.name : '' }
+            if user
+              ul(class='dropdown menu' data-dropdown-menu)
+                li
+                  a(href='#' class='top-bar-dropdown')=user.name 
+                  ul(class='menu')
+                    li
+                      a(href='#') Account
+                    li
+                      a(href='/admin/logout') Logout
 
     div(class='grid-x')
 
       div(class='admin-sidebar--container cell medium-2 large-2 hide-for-small-only' data-sticky-container)
-        div(data-sticky data-margin-top=3)
+        div(data-sticky data-margin-top=4)
           div(class='admin-sidebar')
             ul(class='vertical menu')
               each item in h.adminMenu
@@ -56,3 +64,6 @@ html
             each item in h.adminMenu
               li.nav__item
                 a.nav__link(href=item.slug) #{item.title}
+            if user 
+              li.nav__item
+                a(href='/admin/logout') Logout
