@@ -9,9 +9,15 @@ block content
 
     a(href='/admin/menus/new-menu' class='button') Make a new menu
 
-  div(class='grid-container' id='existingMenus')
-    div(class='card')
+  div(class='grid-container grid-x grid-margin-x' id='existingMenus')
 
     for menu in menus
-      h4= menu.title
-      a(href=`/admin/menus/${menu._id}/edit`) Edit this menu
+      div(class='card cell small-12 medium-6 large-4')
+        div(class='card-divider')
+          h4= menu.title
+        div(class='card-section')
+          ul(class='no-bullet') 
+            for item in menu.menuItems
+              li #{item.name}
+
+          a(class='button hollow secondary snall' href=`/admin/menus/${menu._id}/edit`) Edit #{menu.title}
