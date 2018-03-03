@@ -1,0 +1,46 @@
+mixin menuForm(menu = {})
+
+  form#menuForm( action=`/admin/menus/${menu._id ? menu._id + '/' : 'new-menu' }${ menu._id ? 'edit' : ''}` method='POST')
+    div(id='createMenuForm')
+
+      div(class='cell grid-margin-x')
+        div(class='cell')
+          label(for='title') Title
+          input(type='text' name='title' placeholder='Add a title for this menu' value=menu.title)
+      
+      if menu.title
+        for item in menu.menuItems
+          div(class='cell grid-x grid-margin-x menu-item')
+            div(class='cell small-12 medium-5')
+              label(for='item_1_name') Name
+              input(type='text' name='linkName' placeholder='Add a menu name' value=item.name)
+
+            div(class='cell small-8 medium-5')
+              label(for='item_1_url') Url
+              input(type='text' name='linkUrl' placeholder='Add a menu url' value=item.url)
+
+            div(class='cell small-4 medium-2')
+              button(class='button hollow alert expanded remove-menu-item-btn' onClick="this.parentElement.parentElement.remove()") Remove
+      else
+        div(class='cell grid-x grid-margin-x menu-item')
+          div(class='cell small-12 medium-5')
+            label(for='item_1_name') Name
+            input(type='text' name='linkName' placeholder='Add a menu name')
+
+          div(class='cell small-8 medium-5')
+            label(for='item_1_url') Url
+            input(type='text' name='linkUrl' placeholder='Add a menu url')
+
+          div(class='cell small-4 medium-2')
+            button(class='button hollow alert expanded remove-menu-item-btn' onClick="this.parentElement.parentElement.remove()") Remove
+
+    div(class='cell')
+      p(class='hollow button secondary add-menu-item' id='addMenuItem') Add menu item 
+      input(type='submit' class='button primary')
+
+        
+
+
+      
+      
+

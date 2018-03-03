@@ -5,6 +5,7 @@ const { catchErrors } = require('../handlers/errorHandlers');
 const postController = require('../controllers/postController');
 const adminController = require('../controllers/adminController');
 const authController = require('../controllers/authController');
+const menuController = require('../controllers/menuController');
 
 /* GET home page. */
 router.get('/', catchErrors(postController.loadIndex));
@@ -43,4 +44,11 @@ router.post(
 router.post('/admin/login', authController.login);
 
 router.get('/admin/forgot', catchErrors(authController.forgotPassword));
+
+router.get('/admin/menus', menuController.loadMenus);
+router.get('/admin/menus/new-menu', menuController.startNewMenu);
+router.get('/admin/menus/:id/edit', menuController.editMenu);
+router.post('/admin/menus/new-menu', menuController.saveNewMenu);
+router.post('/admin/menus/:id/edit', menuController.saveExistingMenu);
+
 module.exports = router;

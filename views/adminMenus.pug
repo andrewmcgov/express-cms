@@ -1,0 +1,17 @@
+extends adminLayout
+
+include mixins/_adminMenuForm
+
+block content 
+  div(class='grid-container')
+
+    h1= title
+
+    a(href='/admin/menus/new-menu' class='button') Make a new menu
+
+  div(class='grid-container' id='existingMenus')
+    div(class='card')
+
+    for menu in menus
+      h4= menu.title
+      a(href=`/admin/menus/${menu._id}/edit`) Edit this menu
