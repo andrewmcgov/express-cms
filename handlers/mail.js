@@ -7,6 +7,7 @@ const promisify = require('es6-promisify');
 const transport = nodemailer.createTransport({
   host: process.env.MAIL_HOST,
   port: process.env.MAIL_PORT,
+  secure: false,
   auth: {
     user: process.env.MAIL_USER,
     pass: process.env.MAIL_PASS
@@ -14,7 +15,7 @@ const transport = nodemailer.createTransport({
 });
 
 const generateHTML = (filename, options = {}) => {
-  const html = pug.rengerFile(
+  const html = pug.renderFile(
     `${__dirname}/../views/email/${filename}.pug`,
     options
   );
@@ -27,12 +28,12 @@ exports.send = async options => {
   const text = htmlToText.fromString(html);
 
   const mailOptions = {
-    from: process.env.MAIL_PERSON,
-    to: options.user.email,
+    to: options.admin.email,
+    from: process.env.MAIL_USER,
     subject: options.subject,
     html,
     text
   };
-  const sendMail = promisify(transoport.sendMail, transport);
+  const sendMail = promisify(transport.sendMail, transport);
   return sendMail(mailOptions);
 };

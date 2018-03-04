@@ -8,7 +8,7 @@ const Admin = mongoose.model('Admin');
 const mail = require('../handlers/mail');
 
 exports.login = passport.authenticate('local', {
-  failureRedirect: '/login',
+  failureRedirect: '/admin/login',
   failureFlash: 'Login failed',
   successRedirect: '/admin',
   successFlash: 'You are now logged in'
@@ -50,8 +50,8 @@ exports.forgotPassword = async (req, res) => {
     subject: 'Express CMS password update',
     resetURL
   });
-  // req.flash('success', `You have been emailed a password link: ${resetURL}`);
-  res.redirect('/admin/reset');
+  req.flash('success', `You have been emailed a password link!`);
+  res.redirect('/admin/login');
 };
 
 exports.resetPassword = async (req, res) => {

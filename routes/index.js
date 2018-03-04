@@ -43,7 +43,6 @@ router.post(
 
 router.post('/admin/login', authController.login);
 
-<<<<<<< HEAD
 router.get('/admin/forgot', function(req, res, next) {
   res.render('forgot', { title: 'Reset Password' });
 });
@@ -59,7 +58,6 @@ router.post(
 );
 
 router.post('admin/reset');
-=======
 router.get('/admin/forgot', catchErrors(authController.forgotPassword));
 
 router.get('/admin/menus', menuController.loadMenus);
@@ -67,6 +65,5 @@ router.get('/admin/menus/new-menu', menuController.startNewMenu);
 router.get('/admin/menus/:id/edit', menuController.editMenu);
 router.post('/admin/menus/new-menu', menuController.saveNewMenu);
 router.post('/admin/menus/:id/edit', menuController.saveExistingMenu);
->>>>>>> master
 
 module.exports = router;
