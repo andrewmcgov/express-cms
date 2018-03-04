@@ -11,12 +11,21 @@ const adminSchema = new mongoose.Schema({
     unique: true,
     lowercase: true,
     trim: true,
-    validate: [validator.isEmail, 'Invalid Email Address'],
+    validate: {
+      isAsync: true,
+      validator: validator.isEmail,
+      message: 'Give us a real email, pls.'
+    },
     required: 'Please Supply an email address'
   },
-  name: {
+  firstName: {
     type: String,
-    required: 'Please supply a name',
+    required: 'Please supply a first name!',
+    trim: true
+  },
+  lastName: {
+    type: String,
+    required: 'Please supply a last name!',
     trim: true
   },
   resetPasswordToken: String,

@@ -1,0 +1,10 @@
+extends adminLayout
+
+block content
+  .inner
+    form(method="POST")
+      h2 Reset Your Password
+      p Enter your email address and we will send you a link to reset your password. This link is only valid for one hour.
+      label(for="email") Email
+      input(type="email" name="email")
+      input.button(type="submit" value="Reset Password →")

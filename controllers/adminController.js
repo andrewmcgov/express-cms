@@ -13,11 +13,13 @@ exports.registerForm = (req, res) => {
 };
 
 exports.validateAdmin = [
-  sanitizeBody('name').trim(),
+  sanitizeBody('firstName').trim(),
+  sanitizeBody('lastName').trim(),
   sanitizeBody('email').trim(),
   sanitizeBody('password').trim(),
   sanitizeBody('password-confirm').trim(),
-  check('name', 'You must have a name').isLength({ min: 1 }),
+  check('firstName', 'You must have a first name').isLength({ min: 1 }),
+  check('lastName', 'You must have a last name').isLength({ min: 1 }),
   check('email', 'You must provide a valid email').isEmail(),
   check('password').isLength({ min: 1 }),
   check('password-confirm').isLength({ min: 1 }),
@@ -42,7 +44,11 @@ exports.handleValidatedData = (req, res, next) => {
 };
 
 exports.register = async (req, res, next) => {
-  const admin = new Admin({ email: req.body.email, name: req.body.name });
+  const admin = new Admin({
+    email: req.body.email,
+    firstName: req.body.firstName,
+    lastName: req.body.lastName
+  });
   const register = promisify(Admin.register, Admin);
   await register(admin, req.body.password);
   next();
