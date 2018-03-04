@@ -1,0 +1,57 @@
+// Admin Navigation & Sidebar Styles
+
+.top-bar {
+  background: $darkGrey;
+  color: $offWhite;
+  z-index: 10;
+}
+
+.main-content {
+  margin-top: 20px;
+}
+
+.admin-sidebar--container {
+  background: $medium-gray;
+}
+
+.admin-sidebar {
+  height: 100vh;
+  background: $medium-gray;
+}
+
+.mobile-nav--container {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  .accordion-title {
+    background: $darkGrey;
+    color: $offWhite;
+    border: none;
+  }
+  :last-child:not(.is-active) > .accordion-title {
+    border-bottom: 0;
+  }
+  .accordion-content,
+  .accordion-content:last-child {
+    border: none;
+  }
+  .mobile-nav {
+    list-style-type: none;
+  }
+}
+
+@include breakpoint(small only) {
+  body {
+    border-top: 4px solid $darkGrey;
+  }
+}
+
+.top-bar .dropdown {
+  background-color: $darkGrey;
+  .top-bar-dropdown {
+    color: $offWhite;
+  }
+  .top-bar-dropdown::after {
+    border-color: $offWhite rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
+  }
+}
