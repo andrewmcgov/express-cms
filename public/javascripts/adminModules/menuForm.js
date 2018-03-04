@@ -24,12 +24,6 @@ function menuForm(form) {
     createMenuForm.appendChild(newDiv);
   };
 
-  const moveTitle = function() {
-    const titleInput = document.querySelector('input[name="title"]');
-    const saveTitleInput = document.querySelector('input[name="titleToSave"]');
-    saveTitleInput.value = titleInput.value;
-  };
-
   const makeMenu = function() {
     let menuItems = document.querySelectorAll('.menu-item');
     const menuInput = document.querySelector('input[name="menuItemsToSave"]');
@@ -47,7 +41,6 @@ function menuForm(form) {
 
   const saveMenu = function(e) {
     e.preventDefault();
-    // moveTitle();
     makeMenu();
     document.querySelector('#menuForm').submit();
   };
