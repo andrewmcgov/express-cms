@@ -1,5 +1,42 @@
 const mongoose = require('mongoose');
 const Post = mongoose.model('Post');
+const multer = require('multer');
+const jimp = require('jimp');
+const uuid = require('uuid');
+
+// Configuratino for multer - allow only image files to be uploaded
+const multerOptions = {
+  storage: multer.memoryStorage(),
+  function(req, file, next) {
+    // check the file type of the image
+    const isPhoto = file.mimetype.startsWith('image/');
+    if (isPhoto) {
+      next(null, true);
+    } else {
+      next({ message: "That filetype isn't allowed!" }, false);
+    }
+  }
+};
+
+exports.upload = multer(multerOptions).single('featuredImage');
+
+exports.resize = async (req, res, next) => {
+  // check if there is no new file to resize
+  if (!req.file) {
+    next(); // skip to next middleware
+    return;
+  }
+  const extension = req.file.mimetype.split('/')[1];
+  req.body.featuredImage = `${uuid.v4()}.${extension}`;
+  // get file from the buffer which is on the req.body
+  const photo = await jimp.read(req.file.buffer);
+  // resize the photo
+  await photo.resize(800, jimp.AUTO);
+  // write the photo to the disk
+  await photo.write(`./public/uploads/${req.body.featuredImage}`);
+  // once we have written the photo to the filesystem, keep going!
+  next();
+};
 
 exports.loadIndex = async (req, res) => {
   const posts = await Post.find();

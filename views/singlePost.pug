@@ -1,11 +1,16 @@
 extends layout
 
 block content
+  pre= h.dump(post)
   h2= title
   p Written by #{ post.author ? post.author.name : 'Unknown'}
   if user && post.author.id == user._id
     p
       a(href=`/admin/posts/${post.slug}/edit`) Click here to edit this post
 
-  .content
+  div(class='featured-image')
+    if post.featuredImage
+      img(src=`/uploads/${post.featuredImage}`)
+
+  div(class='content')
     != post.content

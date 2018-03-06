@@ -1,11 +1,17 @@
 mixin postForm(post = {})
 	div(class='grid-container')
 		div(class='grid-x grid-y')
-			form#post(action=`/admin/new-post/${post.slug ? post.slug +'/' : ''}${ post._id ? post._id : '' }${ post.slug ? '/edit' : ''}` method="POST")
+			form#post(action=`/admin/new-post/${post.slug ? post.slug +'/' : ''}${ post._id ? post._id : '' }${ post.slug ? '/edit' : ''}` method="POST" enctype="multipart/form-data")
 				label(for='title') Title
 				input(type='text' name='title' value=post.title placeholder='Add a descriptive title')
 				label(for='tags') Tags
 				input(type='text' name='tags' value=post.tags placeholder='Add tags here, seperated by commas')
+				if post.featuredImage 
+					p Current featured Image:
+					img(class='featured-image' src=`/uploads/${post.featuredImage}`)
+				else
+					label(for="featuredImage") Add a Featured Image
+					input(type="file" name="featuredImage" id="featuredImage" accept="image/gif, image/png, image/jpeg")
 				textarea#tinymce(name="content" type="hidden" placeholder='Write your post here, use the RTE to style your content.')= post.content
 				div(class='grid-x grid-y align-top')
 					<hr>

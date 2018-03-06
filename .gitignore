@@ -35,3 +35,6 @@ variables.env
 
 # Dist files
 public/dist/
+
+# Images
+public/uploads
