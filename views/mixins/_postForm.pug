@@ -6,13 +6,31 @@ mixin postForm(post = {})
 				input(type='text' name='title' value=post.title placeholder='Add a descriptive title')
 				label(for='tags') Tags
 				input(type='text' name='tags' value=post.tags placeholder='Add tags here, seperated by commas')
-				if post.featuredImage 
-					p Current featured Image:
-					img(class='featured-image' src=`/uploads/${post.featuredImage}`)
-				else
-					label(for="featuredImage") Add a Featured Image
-					input(type="file" name="featuredImage" id="featuredImage" accept="image/gif, image/png, image/jpeg")
 				textarea#tinymce(name="content" type="hidden" placeholder='Write your post here, use the RTE to style your content.')= post.content
-				div(class='grid-x grid-y align-top')
-					<hr>
-					input(type='submit' value='Save' class='button medium')
+				hr
+				div(class='grid-x grid-margin-x')
+					div(class='cell small-12 medium-4')
+						div(class='card')
+							div(class='card-divider')
+								span Featured Image
+							div(class='card-section')
+								if post.featuredImage 
+									img(src=`/uploads/${post.featuredImage}`)
+									hr
+									label(class='button hollow secondary small expanded' for="featuredImage") Change Image
+									input(class='hide' type="file" name="featuredImage" id="featuredImage" accept="image/gif, image/png, image/jpeg")
+									input(type="checkbox" name="removeFeaturedImage" id="removeFeaturedImage" class='hide')
+									label(for='removeFeaturedImage' class='button alert hollow small expanded remove-featured-image') Remove image
+									p(class='featured-image-message')
+								else
+									label(class='button hollow secondary small expanded' for="featuredImage") Add Featured Image
+									input(class='hide' type="file" name="featuredImage" id="featuredImage" accept="image/gif, image/png, image/jpeg")
+				
+					div(class='cell auto')
+						div(class='card')
+							div(class='card-divider')
+								span Post Options
+							div(class='card-section text-right')
+								div
+									span(class="button alert delete-post-btn") Delete Post
+									input(type='submit' class='button primary' value='Save Post')

@@ -3,6 +3,7 @@ const Post = mongoose.model('Post');
 const multer = require('multer');
 const jimp = require('jimp');
 const uuid = require('uuid');
+var fs = require('fs');
 
 // Configuratino for multer - allow only image files to be uploaded
 const multerOptions = {
@@ -73,12 +74,20 @@ exports.editPost = async (req, res) => {
 };
 
 exports.updatePost = async (req, res) => {
+  if (req.body.removeFeaturedImage === 'on') {
+    const post = await Post.findOne({ slug: req.params.slug });
+    fs.unlink(`public/uploads/${post.featuredImage}`, e => {
+      if (e) throw e;
+      console.log('Successfully deleted featured image.');
+    });
+    req.body.featuredImage = '';
+  }
   const post = await Post.findOneAndUpdate({ _id: req.params.id }, req.body, {
     new: true,
     runValidators: true
   }).exec();
   req.flash('success', `Successfully updated ${post.title}`);
-  res.redirect(`/posts/${post.slug}`);
+  res.redirect(`/admin/posts/${post.slug}/edit`);
 };
 
 exports.singlePost = async (req, res) => {

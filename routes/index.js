@@ -27,6 +27,8 @@ router.post(
 router.get('/admin/posts/:slug/edit', catchErrors(postController.editPost));
 router.post(
   '/admin/new-post/:slug/:id/edit',
+  postController.upload,
+  catchErrors(postController.resize),
   catchErrors(postController.updatePost)
 );
 
