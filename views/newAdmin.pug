@@ -1,0 +1,13 @@
+extends adminLayout
+
+block content
+  h1 Add a new admin
+  p Enter a trusted email for the person you want to add as an admin. They will have 12 hours to register before the link expires.
+  form(action='/admin/admin-panel/new-admin/add' method="POST")
+    label(for='name') First name
+    input(name='firstName' type='text' placeholder='First name')
+    label(for='name') Last name
+    input(name='lastName' type='text' placeholder='Last name')
+    label(for='Email') Email Address
+    input(type='email' name='email')
+    input(type='submit' class='button primary')

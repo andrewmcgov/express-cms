@@ -6,6 +6,7 @@ const postController = require('../controllers/postController');
 const adminController = require('../controllers/adminController');
 const authController = require('../controllers/authController');
 const menuController = require('../controllers/menuController');
+const settingsController = require('../controllers/settingsController');
 
 /* GET home page. */
 router.get('/', catchErrors(postController.loadIndex));
@@ -65,5 +66,19 @@ router.get('/admin/menus/new-menu', menuController.startNewMenu);
 router.get('/admin/menus/:id/edit', menuController.editMenu);
 router.post('/admin/menus/new-menu', menuController.saveNewMenu);
 router.post('/admin/menus/:id/edit', menuController.saveExistingMenu);
+
+router.get('/admin/admin-panel', function(req, res, next) {
+  res.render('adminPanel');
+});
+
+router.get('/admin/admin-panel/new-admin', function(req, res, next) {
+  res.render('newAdmin');
+});
+
+router.post(
+  '/admin/admin-panel/new-admin/add',
+  authController.isLoggedIn,
+  settingsController.addAdmin
+);
 
 module.exports = router;
