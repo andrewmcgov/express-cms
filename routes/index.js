@@ -32,7 +32,7 @@ router.get('/admin/login', adminController.loginForm);
 
 router.get('/admin/logout', authController.logout);
 
-router.get('/admin/register', adminController.registerForm);
+router.get('/admin/register/:token', adminController.registerForm);
 
 router.post(
   '/admin/register',
@@ -42,7 +42,7 @@ router.post(
   authController.login
 );
 
-router.post('/admin/login', authController.login);
+router.post('/admin/login/', authController.login);
 
 router.get('/admin/forgot', function(req, res, next) {
   res.render('forgot', { title: 'Reset Password' });
@@ -71,7 +71,11 @@ router.get('/admin/admin-panel', function(req, res, next) {
   res.render('adminPanel');
 });
 
-router.get('/admin/admin-panel/new-admin', function(req, res, next) {
+router.get('/admin/admin-panel/new-admin', authController.isLoggedIn, function(
+  req,
+  res,
+  next
+) {
   res.render('newAdmin');
 });
 

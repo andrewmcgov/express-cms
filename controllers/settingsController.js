@@ -5,7 +5,6 @@ const mail = require('../handlers/mail');
 const crypto = require('crypto');
 
 exports.addAdmin = async (req, res, next) => {
-  console.log(req.body);
   const admin = await Admin.findOne({ email: req.body.email });
   if (admin) {
     req.flash('alert', 'Whoops, that person is already an admin');
@@ -16,17 +15,19 @@ exports.addAdmin = async (req, res, next) => {
       inviteAdminToken: token,
       inviteAdminExpires: Date.now() + 3600000, // 1 hour from now
       email: req.body.email
-    }).save();
+    });
+
+    await setting.save();
 
     const inviteURL = `http://${req.headers.host}/admin/register/${
       setting.inviteAdminToken
     }`;
-    // await mail.send({
-    //   admin,
-    //   filename: 'invite-admin',
-    //   subject: 'Featherweight CMS Admin invite',
-    //   inviteURL
-    // });
+    await mail.send({
+      setting,
+      filename: 'invite-admin',
+      subject: 'Featherweight CMS Admin invite',
+      inviteURL
+    });
     req.flash(
       'success',
       `You have invited ${req.body.firstName} to be an admin`

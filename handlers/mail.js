@@ -24,6 +24,9 @@ const generateHTML = (filename, options = {}) => {
 };
 
 exports.send = async options => {
+  if (options.setting != null) {
+    options.admin = options.setting;
+  }
   const html = generateHTML(options.filename, options);
   const text = htmlToText.fromString(html);
 
