@@ -14,14 +14,14 @@ mixin postForm(post = {})
 							div(class='card-divider')
 								span Featured Image
 							div(class='card-section')
+								p(class='featured-image-message')
 								if post.featuredImage 
-									img(src=`/uploads/${post.featuredImage}`)
+									img(class='featured-image-thumb' src=`/uploads/${post.featuredImage}`)
 									hr
-									label(class='button hollow secondary small expanded' for="featuredImage") Change Image
+									label(class='button hollow secondary small expanded change-featured-image' for="featuredImage") Change Image
 									input(class='hide' type="file" name="featuredImage" id="featuredImage" accept="image/gif, image/png, image/jpeg")
 									input(type="checkbox" name="removeFeaturedImage" id="removeFeaturedImage" class='hide')
 									label(for='removeFeaturedImage' class='button alert hollow small expanded remove-featured-image') Remove image
-									p(class='featured-image-message')
 								else
 									label(class='button hollow secondary small expanded' for="featuredImage") Add Featured Image
 									input(class='hide' type="file" name="featuredImage" id="featuredImage" accept="image/gif, image/png, image/jpeg")
@@ -30,7 +30,16 @@ mixin postForm(post = {})
 						div(class='card')
 							div(class='card-divider')
 								span Post Options
-							div(class='card-section text-right')
+							div(class='card-section text-right post-options-content')
 								div
-									span(class="button alert delete-post-btn") Delete Post
+									if post.title
+										span(class='button alert delete-post-btn' data-open='deletePostModal') Delete Post
 									input(type='submit' class='button primary' value='Save Post')
+		if post.title
+			div(class='reveal' id='deletePostModal' data-reveal)
+				h2 Are you sure?
+				p Click delete to delete this post. 
+				//- button(class='close-button' data-close aria-label='Close Modal' type='button')
+				//- 	span(aria-hidden='true') &times;
+				form(action=`/admin/delete-post/${post.id}` method='POST')
+					input(type='submit' class='button alert' value='Delete Post')

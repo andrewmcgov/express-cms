@@ -1,7 +1,6 @@
 extends layout
 
 block content
-  pre= h.dump(post)
   h2= title
   p Written by #{ post.author ? post.author.name : 'Unknown'}
   if user && post.author.id == user._id

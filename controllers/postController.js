@@ -3,7 +3,7 @@ const Post = mongoose.model('Post');
 const multer = require('multer');
 const jimp = require('jimp');
 const uuid = require('uuid');
-var fs = require('fs');
+const fs = require('fs');
 
 // Configuratino for multer - allow only image files to be uploaded
 const multerOptions = {
@@ -88,6 +88,12 @@ exports.updatePost = async (req, res) => {
   }).exec();
   req.flash('success', `Successfully updated ${post.title}`);
   res.redirect(`/admin/posts/${post.slug}/edit`);
+};
+
+exports.deletePost = async (req, res) => {
+  const post = await Post.findByIdAndRemove(req.params.id);
+  req.flash('success', `Successfully deleted ${post.title}`);
+  res.redirect('/admin');
 };
 
 exports.singlePost = async (req, res) => {

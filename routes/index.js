@@ -32,6 +32,8 @@ router.post(
   catchErrors(postController.updatePost)
 );
 
+router.post('/admin/delete-post/:id', catchErrors(postController.deletePost));
+
 router.get('/posts/:slug', catchErrors(postController.singlePost));
 
 router.get('/admin/login', adminController.loginForm);
