@@ -16,6 +16,7 @@ mongoose.Promise = global.Promise;
 require('../models/Admin');
 require('../models/Post');
 require('../models/Menu');
+require('../models/Settings');
 
 /**
  * Module dependencies.

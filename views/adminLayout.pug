@@ -11,17 +11,17 @@ html
     script(src="/dist/admin.bundle.js" defer)
 
   body
-  
+
     div(data-sticky-container)
       div(data-sticky data-margin-top=0)
         div(class='top-bar grid-x hide-for-small-only sticky')
           div(class='top-bar-left')
-            span Express CMS
+            span Featherweight CMS
           div(class='top-bar-right')
             if user
               ul(class='dropdown menu' data-dropdown-menu)
                 li
-                  a(href='#' class='top-bar-dropdown')=user.firstName 
+                  a(href='#' class='top-bar-dropdown')=user.firstName
                   ul(class='menu')
                     li
                       a(href='#') Account
@@ -64,6 +64,6 @@ html
             each item in h.adminMenu
               li.nav__item
                 a.nav__link(href=item.slug) #{item.title}
-            if user 
+            if user
               li.nav__item
                 a(href='/admin/logout') Logout
