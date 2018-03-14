@@ -16,7 +16,7 @@ const postSchema = new mongoose.Schema({
     type: Date,
     default: Date.now
   },
-  photo: String,
+  featuredImage: String,
   // we still need to make an author
   content: {
     type: String,

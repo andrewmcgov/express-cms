@@ -17,13 +17,22 @@ router.get('/about', function(req, res, next) {
 router.get('/admin', authController.isLoggedIn, postController.loadAdmin);
 
 router.get('/admin/new-post', postController.addPost);
-router.post('/admin/new-post', catchErrors(postController.writePost));
+router.post(
+  '/admin/new-post',
+  postController.upload,
+  catchErrors(postController.resize),
+  catchErrors(postController.writePost)
+);
 
 router.get('/admin/posts/:slug/edit', catchErrors(postController.editPost));
 router.post(
   '/admin/new-post/:slug/:id/edit',
+  postController.upload,
+  catchErrors(postController.resize),
   catchErrors(postController.updatePost)
 );
+
+router.post('/admin/delete-post/:id', catchErrors(postController.deletePost));
 
 router.get('/posts/:slug', catchErrors(postController.singlePost));
 
