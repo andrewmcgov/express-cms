@@ -16,14 +16,16 @@ mixin postForm(post = {})
 							div(class='card-section')
 								p(class='featured-image-message')
 								if post.featuredImage 
-									img(class='featured-image-thumb' src=`/uploads/${post.featuredImage}`)
+									img(class='featured-image-thumb' src=`/uploads/${post.featuredImage}` data-has-image data-og-src=`/uploads/${post.featuredImage}`)
 									hr
 									label(class='button hollow secondary small expanded change-featured-image' for="featuredImage") Change Image
 									input(class='hide' type="file" name="featuredImage" id="featuredImage" accept="image/gif, image/png, image/jpeg")
 									input(type="checkbox" name="removeFeaturedImage" id="removeFeaturedImage" class='hide')
-									label(for='removeFeaturedImage' class='button alert hollow small expanded remove-featured-image') Remove image
+									label(for='removeFeaturedImage' class='button alert hollow small expanded remove-featured-image' data-removing='true') Remove Image
 								else
-									label(class='button hollow secondary small expanded' for="featuredImage") Add Featured Image
+									img(class='featured-image-thumb has-no-image hide' src=``)
+									hr(class='hide')
+									label(class='button hollow secondary small expanded change-featured-image' for="featuredImage") Add Featured Image
 									input(class='hide' type="file" name="featuredImage" id="featuredImage" accept="image/gif, image/png, image/jpeg")
 				
 					div(class='cell auto')
