@@ -18,3 +18,14 @@
 .close-modal-btn {
   margin-right: 10px;
 }
+
+// Styles for tags
+.tag-holder {
+  margin-bottom: 10px;
+}
+.tag {
+  background-color: $darkGrey;
+  color: $offWhite;
+  padding: 5px 10px;
+  margin: 0 10px 10px 0;
+}

@@ -4,8 +4,11 @@ mixin postForm(post = {})
 			form#post(action=`/admin/new-post/${post.slug ? post.slug +'/' : ''}${ post._id ? post._id : '' }${ post.slug ? '/edit' : ''}` method="POST" enctype="multipart/form-data")
 				label(for='title') Title
 				input(type='text' name='title' value=post.title placeholder='Add a descriptive title')
-				label(for='tags') Tags
-				input(type='text' name='tags' value=post.tags placeholder='Add tags here, seperated by commas')
+				label(for='tags') Tags (to be hidden)
+				input(type='text' name='tags' placeholder='A string containing the tags')
+				label(for='tags') Enter Tags
+				input(id="enterTags" type='text' name='enter-tags' placeholder='Add tags here, seperated by commas')
+				div(id="tagHolder" class="tag-holder")
 				textarea#tinymce(name="content" type="hidden" placeholder='Write your post here, use the RTE to style your content.')= post.content
 				hr
 				div(class='grid-x grid-margin-x')
