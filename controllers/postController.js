@@ -55,9 +55,16 @@ exports.addPost = (req, res) => {
 
 exports.writePost = async (req, res) => {
   req.body.author = req.user._id;
+  req.body.tags = prepareTags(req.body);
   const post = await new Post(req.body).save();
   res.redirect('/admin');
 };
+
+const prepareTags = (body) => {
+  let tags = body.tags.split(',');
+  tags = tags.map(tag => tag.trim());
+  return tags;
+}
 
 const confirmOwner = (post, admin) => {
   if (!post.author.equals(admin._id)) {
@@ -82,6 +89,7 @@ exports.updatePost = async (req, res) => {
     });
     req.body.featuredImage = '';
   }
+  req.body.tags = prepareTags(req.body);
   const post = await Post.findOneAndUpdate({ _id: req.params.id }, req.body, {
     new: true,
     runValidators: true

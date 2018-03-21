@@ -1,3 +1,5 @@
+import tags from './tags';
+
 function postForm() {
   const featuredImgInput = document.getElementById('featuredImage');
   const featuredImgMsg = document.querySelector('.featured-image-message');
@@ -7,8 +9,8 @@ function postForm() {
 
   function handleImage(file) {
     const reader = new FileReader();
-    reader.onload = (function(img) {
-      return function(e) {
+    reader.onload = (function (img) {
+      return function (e) {
         img.src = e.target.result;
       };
     })(featuredThumb);
@@ -58,6 +60,13 @@ function postForm() {
 
   if (removeImgBtn) removeImgBtn.addEventListener('click', removeImage);
   featuredImgInput.addEventListener('change', featuredImageChange);
+
+  // Get variables for tag function, and call it
+  const tagsInput = document.getElementById('enterTags');
+  const hiddenTagsInput = document.querySelector('input[name="tags"]');
+  const tagsHolder = document.querySelector('#tagHolder');
+  tags(tagsInput, hiddenTagsInput, tagsHolder);
+
 }
 
 export default postForm;
