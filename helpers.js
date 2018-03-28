@@ -5,7 +5,8 @@ exports.adminMenu = [
   { slug: '/admin/new-post', title: 'New Post' },
   { slug: '/', title: 'Blog Home' },
   { slug: '/admin/menus', title: 'Menus' },
-  { slug: '/admin/admin-panel', title: 'Admin Panel' }
+  { slug: '/admin/admin-panel', title: 'Admin Panel' },
+  { slug: '/admin/blog-settings', title: 'Blog Settings' }
 ];
 exports.frontMenu = [
   { slug: '/', title: 'Home' },
