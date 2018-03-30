@@ -1,0 +1,7 @@
+extends adminLayout
+
+include mixins/_accountForm
+block content
+  div(class='grid-container')
+    h1 Edit account
+    +accountForm(admin, 'edit')

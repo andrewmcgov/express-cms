@@ -94,4 +94,11 @@ router.post(
   settingsController.addAdmin
 );
 
+router.get(
+  '/admin/account/edit',
+  authController.isLoggedIn,
+  adminController.renderEditAccount
+);
+
+router.post('/admin/account/edit', adminController.editAccount);
 module.exports = router;
