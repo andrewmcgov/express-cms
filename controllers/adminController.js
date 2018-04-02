@@ -53,3 +53,17 @@ exports.register = async (req, res, next) => {
   await register(admin, req.body.password);
   next();
 };
+
+exports.renderEditAccount = (req, res) => {
+  console.log(req.user);
+  res.render('editAccount', { admin: req.user });
+};
+
+exports.editAccount = async (req, res) => {
+  const admin = await Admin.findOneAndUpdate({ _id: req.user.id }, req.body, {
+    new: true,
+    runValidators: true
+  }).exec();
+  req.flash('success', 'Successfully updated your account');
+  res.redirect('/admin/account/edit');
+};
