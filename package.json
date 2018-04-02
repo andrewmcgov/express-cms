@@ -6,7 +6,9 @@
     "watch": "nodemon ./bin/www",
     "start": "concurrently \"npm run watch\" \"npm run assets\" --names \"🖥,📦\"",
     "assets": "webpack",
-    "lint": "yarn lint:js"
+    "lint": "yarn lint:js",
+    "sample": "node ./data/sampledata.js",
+    "blowitallaway": "node ./data/sampledata.js --delete"
   },
   "dependencies": {
     "body-parser": "~1.18.2",
