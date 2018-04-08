@@ -43,6 +43,7 @@
 @include breakpoint(small only) {
   body {
     border-top: 4px solid $darkGrey;
+    margin-bottom: 50px;
   }
 }
 

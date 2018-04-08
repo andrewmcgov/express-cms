@@ -5,9 +5,17 @@
 .remove-menu-item-btn {
   margin-top: 23px;
   margin-bottom: 0px;
+  @include breakpoint(small only) {
+    margin-top: 7px;
+  }
 }
 .add-menu-item {
   margin-right: 10px;
+}
+@include breakpoint(medium up) {
+  .link-type-div {
+    padding-right: 25px;
+  }
 }
 
 // Styles for Post form
