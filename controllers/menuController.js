@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Menu = mongoose.model('Menu');
+const Post = mongoose.model('Post');
 
 exports.loadMenus = async (req, res, next) => {
   // get all the menys
@@ -8,8 +9,9 @@ exports.loadMenus = async (req, res, next) => {
   res.render('adminMenus', { title: 'Menus', menus });
 };
 
-exports.startNewMenu = (req, res) => {
-  res.render('adminEditMenu', { title: 'Make New Menu' });
+exports.startNewMenu = async (req, res) => {
+  const posts = await Post.find();
+  res.render('adminEditMenu', { title: 'Make New Menu', posts });
 };
 
 // This function creates the Object to send into the database
@@ -38,8 +40,9 @@ exports.saveNewMenu = async (req, res) => {
 };
 
 exports.editMenu = async (req, res) => {
+  const posts = await Post.find();
   const menu = await Menu.findOne({ _id: req.params.id });
-  res.render('adminEditMenu', { title: `Edit ${menu.title}`, menu });
+  res.render('adminEditMenu', { title: `Edit ${menu.title}`, menu, posts });
 };
 
 exports.saveExistingMenu = async (req, res) => {

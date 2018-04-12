@@ -8,32 +8,132 @@ mixin menuForm(menu = {})
           label(for='title') Title
           input(type='text' name='title' placeholder='Add a title for this menu' value=menu.title)
       
+      //- If we are editing an existing menu
       if menu.title
+        //-  array of full post urls
+        - const slugs = posts.map(post => `/posts/${post.slug}`)
         for item in menu.menuItems
+          //- Set up a conditional variable to check if the current item is a post link
+          - const isPost = slugs.includes(item.url)
           div(class='cell grid-x grid-margin-x menu-item')
+
+            //- Title for link
             div(class='cell small-12 medium-5')
               label(for='item_1_name') Name
               input(type='text' name='linkName' placeholder='Add a menu name' value=item.name)
 
-            div(class='cell small-8 medium-5')
-              label(for='item_1_url') Url
-              input(type='text' name='linkUrl' placeholder='Add a menu url' value=item.url)
+            div(class='cell small-12 medium-5 grid-x')
 
-            div(class='cell small-4 medium-2')
+              //- Link type Select
+              div(class='cell small-12 medium-6 large-6 link-type-div')
+                label(for="linkType") Link Type
+                select(name="linkType" class="link-type-select")
+                  option(value="external") External Link
+                  if isPost
+                    option(value="post" selected) Post Link
+                  else
+                    option(value="post") Post Link
+
+              //- Link input or post selector
+              div(class='cell small-12 medium-6 large-6')
+                if isPost
+                  div(class='url-select-input' data-link-type data-link-type-post)
+                    label(for='item_1_url') Url
+                    select(name="linkUrl" data-link-url)
+                      if posts.length
+                        for post in posts
+                          if `/posts/${post.slug}` === item.url
+                            option(value=`/posts/${post.slug}` selected)= post.title
+                          else
+                            option(value=`/posts/${post.slug}`)= post.title
+                  //- This link is a post,  so we are hiding the text input  in case the link type changes
+                  div(class='hide' data-link-type data-link-type-external)
+                    label(for='item_1_url') Url
+                    input(type='text' name='' placeholder='Add a menu url' value=item.url data-link-url)
+                
+                else 
+                  div(data-link-type data-link-type-external)
+                    label(for='item_1_url') Url
+                    input(type='text' name='linkUrl' placeholder='Add a menu url' value=item.url data-link-url)
+
+                  //- This link is an external link, so we are hiding the post selector input in case the link type changes
+                  div(class='hide' data-link-type data-link-type-post)
+                    label(for='item_1_url') Url
+                    select(name="" data-link-url)
+                      if posts.length
+                        for post in posts
+                          option(value=`/posts/${post.slug}`)= post.title
+
+            div(class='cell small-12 medium-2')
               button(class='button hollow alert expanded remove-menu-item-btn' onClick="this.parentElement.parentElement.remove()") Remove
+              hr(class='show-for-small-only')
+      
+      //- This is a new menu, so we serve up an empty manu form with one link to start with
       else
         div(class='cell grid-x grid-margin-x menu-item')
           div(class='cell small-12 medium-5')
             label(for='item_1_name') Name
             input(type='text' name='linkName' placeholder='Add a menu name')
 
-          div(class='cell small-8 medium-5')
-            label(for='item_1_url') Url
-            input(type='text' name='linkUrl' placeholder='Add a menu url')
+          div(class='cell small-12 medium-5 grid-x')
+
+            //- Link type Select
+            div(class='cell small-12 medium-6 large-6 link-type-div')
+              label(for="linkType") Link Type
+              select(name="linkType" class="link-type-select")
+                option(value="external") External Link
+                option(value="post" selected) Post Link
+
+            //- Link input or post selector
+            div(class='cell small-12 medium-6 large-6')
+              div(class='url-select-input' data-link-type data-link-type-post)
+                label(for='item_1_url') Url
+                select(name="linkUrl" data-link-url)
+                  if posts.length
+                    for post in posts
+                      option(value=`/posts/${post.slug}`)= post.title
+                //- By default we want a post link, so we are hiding the text input  in case the link type changes
+              div(class='hide' data-link-type data-link-type-external)
+                label(for='item_1_url') Url
+                input(type='text' name='' placeholder='Add a menu url' data-link-url)
 
           div(class='cell small-4 medium-2')
             button(class='button hollow alert expanded remove-menu-item-btn' onClick="this.parentElement.parentElement.remove()") Remove
+            hr(class='show-for-small-only')
 
+      //- Hidden empty menu state to copy for new meny items
+      div(class='hide')
+        div(class='cell grid-x grid-margin-x menu-item-new')
+          div(class='cell small-12 medium-5')
+            label(for='item_1_name') Name
+            input(type='text' name='linkName' placeholder='Add a menu name')
+
+          div(class='cell small-12 medium-5 grid-x')
+
+            //- Link type Select
+            div(class='cell small-12 medium-6 large-6 link-type-div')
+              label(for="linkType") Link Type
+              select(name="linkType" class="link-type-select")
+                option(value="external") External Link
+                option(value="post" selected) Post Link
+
+            //- Link input or post selector
+            div(class='cell small-12 medium-6 large-6')
+              div(class='url-select-input' data-link-type data-link-type-post)
+                label(for='item_1_url') Url
+                select(name="linkUrl" data-link-url)
+                  if posts.length
+                    for post in posts
+                      option(value=`/posts/${post.slug}`)= post.title
+                //- By default we want a post link, so we are hiding the text input  in case the link type changes
+              div(class='hide url-hidden-input' data-link-type data-link-type-external)
+                label(for='item_1_url') Url
+                input(type='text' name='' placeholder='Add a menu url' data-link-url)
+
+          div(class='cell small-4 medium-2')
+            button(class='button hollow alert expanded remove-menu-item-btn' onClick="this.parentElement.parentElement.remove()") Remove
+            hr(class='show-for-small-only')
+      
     div(class='cell')
       p(class='hollow button secondary add-menu-item' id='addMenuItem') Add menu item 
       input(type='submit' class='button primary')

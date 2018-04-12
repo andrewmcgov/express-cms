@@ -2,37 +2,38 @@ function menuForm(form) {
   const createMenuForm = document.getElementById('createMenuForm');
   const newMenuBtn = document.getElementById('addMenuItem');
   const saveMenuBtn = document.querySelector('input[type="submit"]');
+  const menuItemDiv = document.querySelector('.menu-item-new');
+  const linkTypeSelects = document.querySelectorAll('.link-type-select');
 
   const addNewMenu = function() {
-    const menuItem = `
-      <div class="cell grid-x grid-margin-x menu-item">
-        <div class="cell small-12 medium-5">
-          <label for="item_1_name">Name</label>
-          <input type="text" name="linkName" placeholder="Add a menu name">
-        </div>
-        <div class="cell small-8 medium-5">
-          <label for="item_1_url">Url</label>
-          <input type="text" name="linkUrl" placeholder="Add a menu url">
-        </div>
-        <div class="cell small-4 medium-2">
-          <button class="button hollow alert expanded remove-menu-item-btn" onclick="this.parentElement.parentElement.remove()">Remove</button>
-        </div>
-      </div>
-    `;
-    const newDiv = document.createElement('div');
-    newDiv.innerHTML = menuItem;
-    createMenuForm.appendChild(newDiv);
+    const newMenuItemDiv = menuItemDiv.cloneNode(true);
+    newMenuItemDiv.classList.add('menu-item');
+    newMenuItemDiv
+      .querySelector('.link-type-select')
+      .addEventListener('change', changeLinkType);
+    createMenuForm.appendChild(newMenuItemDiv);
+  };
+
+  const changeLinkType = function() {
+    const container = this.parentElement.parentElement;
+    const linkType = this.value;
+    const inputToShow = container.querySelector(`[data-link-type-${linkType}]`);
+    container.querySelectorAll('[data-link-type]').forEach(el => {
+      el.classList.add('hide');
+      el.querySelector('[data-link-url]').name = '';
+    });
+    inputToShow.classList.remove('hide');
+    inputToShow.querySelector('[data-link-url]').name = 'linkUrl';
   };
 
   const makeMenu = function() {
     let menuItems = document.querySelectorAll('.menu-item');
-    const menuInput = document.querySelector('input[name="menuItemsToSave"]');
     let currentItem = 0;
 
     menuItems.forEach(function(item) {
       currentItem++;
       let name = item.querySelector('input[name="linkName"]');
-      let url = item.querySelector('input[name="linkUrl"]');
+      let url = item.querySelector('[name="linkUrl"]');
 
       name.name = `${currentItem}-name`;
       url.name = `${currentItem}-url`;
@@ -47,6 +48,9 @@ function menuForm(form) {
 
   newMenuBtn.addEventListener('click', addNewMenu);
   saveMenuBtn.addEventListener('click', saveMenu);
+  linkTypeSelects.forEach(select =>
+    select.addEventListener('change', changeLinkType)
+  );
 }
 
 export default menuForm;

@@ -7,6 +7,7 @@ const adminController = require('../controllers/adminController');
 const authController = require('../controllers/authController');
 const menuController = require('../controllers/menuController');
 const settingsController = require('../controllers/settingsController');
+const blogSettingsController = require('../controllers/blogSettingsController');
 
 /* GET home page. */
 router.get('/', catchErrors(postController.loadIndex));
@@ -94,6 +95,9 @@ router.post(
   settingsController.addAdmin
 );
 
+router.get(`/admin/blog-settings`, blogSettingsController.loadSettings);
+router.post('/admin/blog-settings', blogSettingsController.saveSettings);
+
 router.get(
   '/admin/account/edit',
   authController.isLoggedIn,
@@ -101,4 +105,5 @@ router.get(
 );
 
 router.post('/admin/account/edit', adminController.editAccount);
+
 module.exports = router;

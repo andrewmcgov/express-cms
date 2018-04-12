@@ -17,6 +17,7 @@ require('../models/Admin');
 require('../models/Post');
 require('../models/Menu');
 require('../models/Settings');
+require('../models/BlogSettings');
 
 /**
  * Module dependencies.

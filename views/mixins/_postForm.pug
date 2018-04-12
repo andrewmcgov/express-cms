@@ -4,7 +4,7 @@ mixin postForm(post = {})
 			form#post(action=`/admin/new-post/${post.slug ? post.slug +'/' : ''}${ post._id ? post._id : '' }${ post.slug ? '/edit' : ''}` method="POST" enctype="multipart/form-data")
 				label(for='title') Title
 				input(type='text' name='title' value=post.title placeholder='Add a descriptive title')
-				- tags = post.tags.join()
+				- const tags = post.tags ? post.tags.join() : ''
 				input(type='text' name='tags' class="hide" placeholder='A string containing the tags' value=tags) 
 				label(for='tags') Enter Tags
 				input(id="enterTags" type='text' name='enter-tags' placeholder='Add tags here, seperated by commas')
