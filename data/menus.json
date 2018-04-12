@@ -1,0 +1,16 @@
+{
+  "id": "5a9aef2c26c187281c24f2a4",
+  "title": "Main menu",
+  "menuItems": [
+    {
+      "id": "5a9b0617161a993eacf4aa8d",
+      "name": "Home",
+      "url": "/"
+    },
+    {
+      "id": "5a9b0617161a993eac69403d",
+      "name": "Test post",
+      "url": "/my-fist-post"
+    }
+  ]
+}

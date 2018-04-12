@@ -98,4 +98,12 @@ router.post(
 router.get(`/admin/blog-settings`, blogSettingsController.loadSettings);
 router.post('/admin/blog-settings', blogSettingsController.saveSettings);
 
+router.get(
+  '/admin/account/edit',
+  authController.isLoggedIn,
+  adminController.renderEditAccount
+);
+
+router.post('/admin/account/edit', adminController.editAccount);
+
 module.exports = router;

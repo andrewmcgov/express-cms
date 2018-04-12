@@ -1,0 +1,11 @@
+{
+  "title": "My first Post",
+  "slug": "my-fist-post",
+  "tags": [
+    "test",
+    "post"
+  ],
+  "created": "2018-03-04 22:03:47.445",
+  "content": "This an example post, feel free to delete it and create your own",
+  "author": "58c039018060197ca0b52d4c"
+}
