@@ -10,7 +10,11 @@ const settingsController = require('../controllers/settingsController');
 const blogSettingsController = require('../controllers/blogSettingsController');
 
 /* GET home page. */
-router.get('/', catchErrors(postController.loadIndex));
+router.get(
+  '/',
+  catchErrors(blogSettingsController.getSettings),
+  catchErrors(postController.loadIndex)
+);
 
 router.get('/about', function(req, res, next) {
   res.render('page', { title: 'About' });
@@ -36,7 +40,11 @@ router.post(
 
 router.post('/admin/delete-post/:id', catchErrors(postController.deletePost));
 
-router.get('/posts/:slug', catchErrors(postController.singlePost));
+router.get(
+  '/posts/:slug',
+  catchErrors(blogSettingsController.getSettings),
+  catchErrors(postController.singlePost)
+);
 
 router.get('/admin/login', adminController.loginForm);
 

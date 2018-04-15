@@ -14,7 +14,6 @@ exports.loadSettings = async (req, res) => {
 
 exports.saveSettings = async (req, res) => {
   const settingsCheck = await BlogSettings.find({});
-  console.log(settingsCheck);
   if (settingsCheck.length) {
     const settings = await BlogSettings.findOneAndUpdate(
       { _id: settingsCheck[0]._id },
@@ -26,4 +25,15 @@ exports.saveSettings = async (req, res) => {
   }
   req.flash('success', 'Successfully saved blog settings!');
   res.redirect('/admin/blog-settings');
+};
+
+exports.getSettings = async (req, res, next) => {
+  const dbSettings = await BlogSettings.findOne({});
+  const settings = {};
+  settings.headerMenu = await Menu.findOne({ _id: dbSettings.header_menu });
+  settings.footerMenu = await Menu.findOne({ _id: dbSettings.footer_menu });
+  settings.headerMenu = settings.headerMenu.menuItems;
+  settings.footerMenu = settings.footerMenu.menuItems;
+  req.settings = settings;
+  next();
 };
