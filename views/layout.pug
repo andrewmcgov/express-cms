@@ -8,10 +8,11 @@ html
 
   header
     nav
-      ul
-        each item in h.frontMenu
-          li.nav__item
-            a.nav__link(href=item.slug) #{item.title}
+      if settings.headerMenu
+        ul
+          each item in settings.headerMenu
+            li(class="nav__item")
+              a(class="nav__link" href=item.url) #{item.name}
 
   block messages
     if locals.flashes
@@ -25,4 +26,9 @@ html
 
     block content
 
-    a(href="/admin") Admin Home
+  footer
+    if settings.footerMenu
+      ul
+        each item in settings.footerMenu
+          li(class="nav__item")
+            a(class="nav__link" href=item.url) #{item.name}
