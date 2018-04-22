@@ -1,0 +1,13 @@
+mixin topBar()
+  div(class="top-bar")
+
+    div(class="top-bar__logo")
+      h3 Featherweight
+
+    div(class="top-bar__nav")
+      nav(class="nav")
+        if settings.headerMenu
+          ul(class="nav__linklist")
+            each item in settings.headerMenu
+              li(class="nav__item")
+                a(class="nav__link" href=item.url) #{item.name}

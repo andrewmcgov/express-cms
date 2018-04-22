@@ -1,18 +1,17 @@
+include mixins/_topBar
+
 doctype html
 html
   head
     title= title
+    <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700|Raleway:400,400i,700,900" rel="stylesheet">
     link(rel='stylesheet', href='/dist/style.css')
     script(src="/dist/app.bundle.js" defer)
   body
 
   header
-    nav
-      if settings.headerMenu
-        ul
-          each item in settings.headerMenu
-            li(class="nav__item")
-              a(class="nav__link" href=item.url) #{item.name}
+    +topBar()
+
 
   block messages
     if locals.flashes

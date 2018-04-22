@@ -2,15 +2,17 @@
 // @import "./skins/lightgray/skin.min.css";
 
 // Base - global variables, mixins, and resets
+@import "./base/reset";
 @import "./base/variables";
 @import "./base/mixins";
-@import "./base/reset";
+@import "./base/globals";
 
 // Components - styles that will be used in multiple parts of the site
 @import "./components/typography";
 @import "./components/grid";
 @import "./components/buttons";
-@import "./components/navigation";
+@import "./components/top-bar";
+@import "./components/hero";
 @import "./components/forms";
 
 // Sections - styles for specific pages or parts of the site
