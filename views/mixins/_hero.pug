@@ -1,0 +1,9 @@
+mixin hero()
+  div(class="hero")
+    - const featuredImage = settings.featuredImage ? `/uploads/${settings.featuredImage}` : 'https://images.unsplash.com/photo-1496582490020-60c1344c64aa?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=cb806e3f9bae6cf63ce928b4f137f52d&auto=format&fit=crop&w=1359&q=80'
+    
+    img(class="hero__image" src=featuredImage)
+
+    div(class="hero__text")
+      h1(class="hero__heading") A Blog
+

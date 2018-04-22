@@ -1,0 +1,24 @@
+// Top Bar
+.top-bar {
+  padding: 0 1.5rem;
+  background-color: $dark-grey;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+}
+
+.top-bar__nav {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.nav__item {
+  display: inline-block;
+}
+.nav__link {
+  color: $secondary-color;
+  padding: 1rem;
+  transition: all 0.2s ease-in;
+  &:hover {
+    background-color: lighten($dark-grey, 10%);
+  }
+}

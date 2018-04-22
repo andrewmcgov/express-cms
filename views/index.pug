@@ -1,11 +1,10 @@
 extends layout
 
 include mixins/_postItem
+include mixins/_hero
 block content
-  h1= title
-  p Welcome to #{title}
-  if settings.featuredImage
-    img(src=`/uploads/${settings.featuredImage}`)
+
+  +hero()
 
   each post in posts
     +postItem(post)

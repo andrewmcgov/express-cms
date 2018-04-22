@@ -1,11 +1,19 @@
-// Colors 
-$white: #fcfcfc;
-$offWhite: #ededed;
-$lightGrey: #bababa;
-$grey: #777777;
-$darkGrey: #282828;
-$darkGrey: #1e1e1e;
+// Colors
+$white: #ffffff;
+$black: #000000;
+$off-white: #fafafa;
+$light-grey: #d0d0d0;
+$grey: #a2a2a2;
+$dark-grey: #3b3b3b;
 
-$primaryColor: #cc1c1c;
+$primary-color: #28c5a6;
+$primary-color-dark: darken($primary-color, 15%);
+$primary-color-light: lighten($primary-color, 15%);
+
+$secondary-color: #ffd833;
+$secondary-color-dark: darken($secondary-color, 15%);
+$secondary-color-light: lighten($secondary-color, 15%);
 
 // Typography
+$header-font: "Libre Baskerville", serif;
+$body-font: "Raleway", sans-serif;

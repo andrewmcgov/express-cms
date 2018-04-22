@@ -1,1 +1,68 @@
+// Global line height
+* {
+  line-height: 1.5;
+}
 // Typography
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $header-font;
+  font-weight: 700;
+  color: $primary-color;
+}
+
+// Set the root font size, based on screen size.
+html {
+  font-size: 17px;
+}
+@media (max-width: 900px) {
+  html {
+    font-size: 15px;
+  }
+}
+@media (max-width: 400px) {
+  html {
+    font-size: 13px;
+  }
+}
+
+// Rems will now scale with the screen size.
+h1 {
+  font-size: 3rem;
+}
+h2 {
+  font-size: 2.5rem;
+  color: $grey;
+}
+h3 {
+  font-size: 2rem;
+  color: $primary-color-light;
+}
+h4 {
+  font-size: 1.75rem;
+  color: $secondary-color;
+  font-weight: 400;
+}
+h5 {
+  font-size: 1.5rem;
+  color: $secondary-color-dark;
+  font-weight: 400;
+}
+h6 {
+  font-size: 1.25rem;
+  color: $secondary-color-light;
+  font-weight: 400;
+}
+
+p,
+span,
+ul,
+ol,
+li,
+a,
+button {
+  font-family: $body-font;
+}
