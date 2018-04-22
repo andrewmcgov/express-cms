@@ -41,7 +41,7 @@ exports.resize = async (req, res, next) => {
 
 exports.loadIndex = async (req, res) => {
   const posts = await Post.find();
-  res.render('index', { title: 'Our CMS', posts });
+  res.render('index', { title: 'Our CMS', posts, settings: req.settings });
 };
 
 exports.loadAdmin = async (req, res) => {
@@ -106,7 +106,6 @@ exports.deletePost = async (req, res) => {
 
 exports.singlePost = async (req, res) => {
   const post = await Post.findOne({ slug: req.params.slug }).populate('author');
-
   if (!post) return next();
-  res.render('singlePost', { post, title: post.title });
+  res.render('singlePost', { post, title: post.title, settings: req.settings });
 };

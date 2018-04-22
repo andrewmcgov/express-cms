@@ -11,15 +11,15 @@ block content
             label(for='header_menu') Header Menu
             select(name='header_menu' id='header_menu' selected=settings.header_menu)
               for menu in menus
-                if menu._id == settings.header_menu
+                if String(menu._id) == String(settings.header_menu)           
                   option(value=menu._id selected)= menu.title
                 else
                   option(value=menu._id)= menu.title
           div(class='cell small-12 medium-6 large-6')
             label(for='footer_menu') Footer Menu
             select(name='footer_menu' id='footer_menu' selected=settings.footer_menu)
-              for menu in menus
-                if menu._id == settings.footer_menu
+              for menu in menus           
+                if String(menu._id) == String(settings.footer_menu)          
                   option(value=menu._id selected)= menu.title
                 else
                   option(value=menu._id)= menu.title
