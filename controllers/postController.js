@@ -60,11 +60,11 @@ exports.writePost = async (req, res) => {
   res.redirect('/admin');
 };
 
-const prepareTags = (body) => {
+const prepareTags = body => {
   let tags = body.tags.split(',');
   tags = tags.map(tag => tag.trim());
   return tags;
-}
+};
 
 const confirmOwner = (post, admin) => {
   if (!post.author.equals(admin._id)) {

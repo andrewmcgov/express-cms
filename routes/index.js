@@ -96,7 +96,12 @@ router.post(
 );
 
 router.get(`/admin/blog-settings`, blogSettingsController.loadSettings);
-router.post('/admin/blog-settings', blogSettingsController.saveSettings);
+router.post(
+  '/admin/blog-settings',
+  blogSettingsController.upload,
+  catchErrors(blogSettingsController.resize),
+  blogSettingsController.saveSettings
+);
 
 router.get(
   '/admin/account/edit',
