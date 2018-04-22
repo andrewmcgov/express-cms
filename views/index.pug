@@ -4,6 +4,8 @@ include mixins/_postItem
 block content
   h1= title
   p Welcome to #{title}
+  if settings.featuredImage
+    img(src=`/uploads/${settings.featuredImage}`)
 
   each post in posts
     +postItem(post)

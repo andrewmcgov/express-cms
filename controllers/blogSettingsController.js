@@ -46,8 +46,8 @@ exports.loadSettings = async (req, res) => {
 
 exports.saveSettings = async (req, res) => {
   if (req.body.removeFeaturedImage === 'on') {
-    const settings = await BlogSettings.find({ slug: req.params.slug });
-    fs.unlink(`public/uploads/${settings[0].featuredImage}`, e => {
+    const settings = await BlogSettings.findOne({});
+    fs.unlink(`public/uploads/${settings.featuredImage}`, e => {
       if (e) throw e;
       console.log('Successfully deleted featured image.');
     });
@@ -71,10 +71,11 @@ exports.saveSettings = async (req, res) => {
 exports.getSettings = async (req, res, next) => {
   const dbSettings = await BlogSettings.findOne({});
   const settings = {};
-  settings.headerMenu = await Menu.findOne({ _id: dbSettings.header_menu });
-  settings.footerMenu = await Menu.findOne({ _id: dbSettings.footer_menu });
-  settings.headerMenu = settings.headerMenu.menuItems;
-  settings.footerMenu = settings.footerMenu.menuItems;
+  const headerMenu = await Menu.findOne({ _id: dbSettings.header_menu });
+  const footerMenu = await Menu.findOne({ _id: dbSettings.footer_menu });
+  settings.headerMenu = headerMenu.menuItems;
+  settings.footerMenu = footerMenu.menuItems;
+  settings.featuredImage = dbSettings.featuredImage;
   req.settings = settings;
   next();
 };
