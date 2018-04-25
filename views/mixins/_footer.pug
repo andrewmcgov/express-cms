@@ -1,0 +1,8 @@
+mixin footer()
+
+  footer
+    if settings.footerMenu
+      ul
+        each item in settings.footerMenu
+          li(class="nav__item")
+            a(class="nav__link" href=item.url) #{item.name}

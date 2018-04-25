@@ -1,4 +1,5 @@
 include mixins/_topBar
+include mixins/_footer
 
 doctype html
 html
@@ -12,22 +13,7 @@ html
   header
     +topBar()
 
+  block content
 
-  block messages
-    if locals.flashes
-      .flash-messages
-        - const categories = Object.keys(locals.flashes)
-        each category in categories
-          each message in flashes[category]
-            .flash(class=`flash--${category}`)
-              p.flash__text!= message
-              button.flash__remove(onClick="this.parentElement.remove()") &times;
+  +footer()
 
-    block content
-
-  footer
-    if settings.footerMenu
-      ul
-        each item in settings.footerMenu
-          li(class="nav__item")
-            a(class="nav__link" href=item.url) #{item.name}

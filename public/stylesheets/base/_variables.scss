@@ -14,6 +14,13 @@ $secondary-color: #ffd833;
 $secondary-color-dark: darken($secondary-color, 15%);
 $secondary-color-light: lighten($secondary-color, 15%);
 
+$overlay-opacity: 0.75;
 // Typography
-$header-font: "Libre Baskerville", serif;
-$body-font: "Raleway", sans-serif;
+$header-font: 'Libre Baskerville', serif;
+$body-font: 'Raleway', sans-serif;
+
+// Breakpoint
+
+$mobile: 700px;
+$mobile-up: 701px;
+$mobile-down: 699px;

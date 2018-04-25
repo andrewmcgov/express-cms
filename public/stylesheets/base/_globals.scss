@@ -2,3 +2,11 @@
 body {
   background-color: $off-white;
 }
+
+main {
+  @media only screen and (min-width: $mobile-up) {
+    margin: 0 auto;
+    padding: 60px 30px;
+  }
+  max-width: 1200px;
+}
