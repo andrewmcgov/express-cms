@@ -12,7 +12,6 @@ class SinglePost {
   }
 
   titleSlideIn() {
-    console.log('this runs');
     this.postTitle.classList.add('title-slide-up');
     this.postDescription.classList.add('title-slide-up');
     this.postTitle.classList.remove('hide');
