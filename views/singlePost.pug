@@ -6,13 +6,11 @@ block content
       div(class="post__hero--container")
         div(class='post__hero--image-wrapper')
           if post.featuredImage
-            img(class="post__hero--image" src=`/uploads/${post.featuredImage}`)
+            div(class="loading-circle")
+            img(class="post__hero--image hide" src=`/uploads/${post.featuredImage}`)
         div(class="post__hero--info")
-          h2= title
-          p Written by #{ post.author ? `${post.author.firstName} ${post.author.lastName}` : 'Unknown'}
-          if user && post.author.id == user._id
-            p
-              a(href=`/admin/posts/${post.slug}/edit`) Click here to edit this post
+          h2(class="info__title hide")= title
+          p(class="info__description hide") Written by #{ post.author ? `${post.author.firstName} ${post.author.lastName}` : 'Unknown'}
 
     div(class='post__content')
       != post.content

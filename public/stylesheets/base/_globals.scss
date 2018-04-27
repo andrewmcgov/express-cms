@@ -10,3 +10,22 @@ main {
   }
   max-width: 1200px;
 }
+
+.hide {
+  display: none;
+}
+
+.fade-image-in {
+  @include image-blur;
+}
+
+.loading-circle {
+  @include loading-icon;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+}
+
+.title-slide-up {
+  @include title-slide-in;
+}

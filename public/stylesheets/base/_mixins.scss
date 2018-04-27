@@ -1,1 +1,73 @@
 // Mixins
+
+@mixin loading-icon {
+  background-color: $secondary-color;
+  animation: loading-circle 1.25s cubic-bezier(0.215, 0.61, 0.355, 1) -0.4s infinite;
+
+  @keyframes loading-circle {
+    0% {
+      transform: scale(0.5);
+      opacity: 1;
+    }
+
+    50% {
+      transform: scale(5);
+      opacity: 0.5;
+    }
+
+    100% {
+      transform: scale(1.5);
+      opacity: 0.2;
+    }
+  }
+}
+
+@mixin image-blur {
+  animation-name: image-blur;
+  animation-duration: 0.25s;
+  animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-delay: 0;
+  animation-play-state: running;
+  animation-fill-mode: forwards;
+
+  @keyframes image-blur {
+    0% {
+      filter: blur(10px);
+      transform: scale(1.5);
+    }
+
+    50% {
+      filter: blur(5px);
+      transform: scale(1.25);
+    }
+
+    100% {
+      filter: blur(0);
+      transform: scale(1);
+    }
+  }
+}
+
+@mixin title-slide-in {
+  background-color: $secondary-color;
+  animation: title-slide 1.25s cubic-bezier(0.215, 0.61, 0.355, 1) -0.4s;
+
+  @keyframes title-slide {
+    0% {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+
+    50% {
+      transform: translateY(50%);
+      opacity: 0.5;
+    }
+
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+}
