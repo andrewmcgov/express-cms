@@ -95,11 +95,11 @@ const config = {
   },
   plugins: [
     extractMainCSS,
-    extractAdminCSS,
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'adminvendors',
-      minChunks: Infinity
-    })
+    extractAdminCSS
+    // new webpack.optimize.CommonsChunkPlugin({
+    //   name: 'adminvendors',
+    //   minChunks: Infinity
+    // })
   ],
   watch: true
 };

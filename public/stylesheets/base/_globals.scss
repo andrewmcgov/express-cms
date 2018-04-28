@@ -2,3 +2,30 @@
 body {
   background-color: $off-white;
 }
+
+main {
+  @media only screen and (min-width: $mobile-up) {
+    margin: 0 auto;
+    padding: 60px 30px;
+  }
+  max-width: 1200px;
+}
+
+.hide {
+  display: none;
+}
+
+.fade-image-in {
+  @include image-blur;
+}
+
+.loading-circle {
+  @include loading-icon;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+}
+
+.title-slide-up {
+  @include title-slide-in;
+}
