@@ -15,6 +15,13 @@
 @import "./components/hero";
 @import "./components/forms";
 @import "./components/singlePost";
+@import "./components/post-item";
 
 // Sections - styles for specific pages or parts of the site
 @import "./sections/admin";
+
+.small--hide {
+  @media only screen and (max-width: $mobile-down) {
+    display: none;
+  }
+}

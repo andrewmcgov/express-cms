@@ -1,9 +1,29 @@
 //- this is basically our 'grid-item' for posts
-mixin postItem(post = {})
-  .post
-    .post--title
-      a(href=`/posts/${ post.slug }`)
-        h3= post.title
-    .post--description
-      div
-        != post.content
+mixin postItem(post = {}, oddPost = false)
+  div(class=`post-item ${oddPost ? 'post-item--odd' : ''}`)
+    div(class="post-item__image-container")
+      a(class="post-item__image--link" href=`/posts/${ post.slug }`)
+        if post.featuredImage
+          img(class="post-item__image" src=`/uploads/${post.featuredImage}`)
+        else
+          img(class="post-item__image post-item__image--fallback" src="https://images.unsplash.com/photo-1507226983735-a838615193b0?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=f9799385813b9667c25137f7a9efe7ac&auto=format&fit=crop&w=1350&q=80")
+    
+    div(class="post-item__content-container")
+
+      div(class="post-item__heading")
+        a(href=`/posts/${ post.slug }`)
+          h3(class="post-item__title")= post.title
+
+      div(class="post-item__content")
+        div
+          //-  We should maybe have a truncated version of the post here
+               so that we can cut this logic out of the template
+          - let content = post.content
+          - content = content.substring(0, 350);
+          - content = content + ' . . . </p>'
+          != content
+
+      div(class="post-item__tags")
+        if post.tags
+          for tag in post.tags
+            span(class="post-tag")= tag

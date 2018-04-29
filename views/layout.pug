@@ -4,8 +4,9 @@ include mixins/_footer
 doctype html
 html
   head
+    meta(name='viewport' content='width=device-width', initial-scale=1)
     title= title
-    <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700|Raleway:400,400i,700,900" rel="stylesheet">
+    link(href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700|Raleway:400,400i,700,900" rel="stylesheet")
     link(rel='stylesheet', href='/dist/style.css')
     script(src="/dist/app.bundle.js" defer)
   body

@@ -2,9 +2,10 @@ mixin topBar()
   div(class="top-bar")
 
     div(class="top-bar__logo")
-      h3 Featherweight
+      a(href="/")
+        h3 Featherweight
 
-    div(class="top-bar__nav")
+    div(class="top-bar__nav small--hide")
       nav(class="nav")
         if settings.headerMenu
           ul(class="nav__linklist")

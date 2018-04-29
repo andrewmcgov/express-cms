@@ -4,12 +4,26 @@
   overflow-y: hidden;
   height: 30vh;
   width: 100%;
+  @media only screen and (max-width: $mobile-down) {
+    min-height: 300px;
+    margin-bottom: 2rem;
+  }
 }
+
 .hero__image {
   object-fit: cover;
   width: 100%;
+  height: 100%;
+  transition: all 0.2s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  opacity: 0;
 }
-.hero__text {
+
+.fade-hero-in {
+  opacity: 1;
+}
+
+.hero__text,
+.hero__blocks {
   position: absolute;
   top: 0;
   left: 0;
@@ -19,6 +33,67 @@
   justify-content: center;
   align-items: center;
 }
+
+.hero__text {
+  margin-left: -200px;
+  opacity: 0;
+  transition: all 0.3s;
+}
+.hero__text--show {
+  margin-left: 0px;
+  opacity: 1;
+}
+
 .hero__heading {
   color: $off-white;
+  @media only screen and (max-width: $mobile-down) {
+    font-size: 2rem;
+  }
+}
+
+.hero-blocks__border {
+  width: 450px;
+  height: 200px;
+  border: 3px solid $primary-color;
+  margin-top: -25px;
+  margin-left: 0px;
+  transition: all 0.3s;
+  opacity: 0;
+}
+
+.hero-blocks__border--show {
+  opacity: 1;
+  margin-left: -125px;
+  @media only screen and (max-width: $mobile-down) {
+    height: 150px;
+    width: 250px;
+    margin-left: -50px;
+  }
+}
+
+.hero-blocks__solid-block {
+  background-color: $secondary-color;
+  margin-top: 175px;
+  margin-left: 200px;
+  transform-origin: top;
+  transform: scale(0.75);
+  opacity: 0;
+  transition: all 0.2s ease-in;
+  @media only screen and (max-width: $mobile-down) {
+    margin-top: 120px;
+    margin-left: 85px;
+  }
+}
+
+.hero-blocks__solid-block--show {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.hero--blocks__solid-text {
+  color: $off-white;
+  padding: 1rem;
+  @media only screen and (max-width: $mobile-down) {
+    font-size: 1rem;
+  }
 }
