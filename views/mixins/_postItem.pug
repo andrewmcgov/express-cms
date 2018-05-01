@@ -1,6 +1,6 @@
 //- this is basically our 'grid-item' for posts
 mixin postItem(post = {}, oddPost = false)
-  div(class=`post-item ${oddPost ? 'post-item--odd' : ''}`)
+  div(class=`post-item ${oddPost ? 'post-item--odd' : ''} scroll-show--hidden`)
     div(class="post-item__image-container")
       a(class="post-item__image--link" href=`/posts/${ post.slug }`)
         if post.featuredImage

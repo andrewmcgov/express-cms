@@ -3,6 +3,7 @@ require('../stylesheets/style.admin.scss');
 
 import Hero from './modules/Hero';
 import SinglePost from './modules/SinglePost';
+import scrollShow from './modules/scrollShow';
 
 const heroContainer = document.querySelector('.hero');
 const BlogPostImage = document.querySelector('.post__hero--image');
@@ -41,3 +42,5 @@ if (BlogPostImage) {
     BlogPost.titleSlideIn(BlogPost);
   });
 }
+
+scrollShow();
