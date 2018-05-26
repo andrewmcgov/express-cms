@@ -2,8 +2,16 @@
 .top-bar {
   padding: 0 1.5rem;
   background-color: $dark-grey;
-  display: grid;
-  grid-template-columns: 1fr 4fr;
+  // display: grid;
+  // grid-template-columns: 1fr 4fr;
+  // grid-template-rows: 1fr;
+  display: flex;
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  height: 3rem;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 .top-bar__nav {
@@ -11,14 +19,14 @@
   justify-content: flex-end;
   align-items: center;
 }
+
+.nav__linklist {
+  white-space: nowrap;
+}
+
 .nav__item {
   display: inline-block;
 }
 .nav__link {
-  color: $secondary-color;
-  padding: 1rem;
-  transition: all 0.2s ease-in;
-  &:hover {
-    background-color: lighten($dark-grey, 10%);
-  }
+  @include menu-link;
 }

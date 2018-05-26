@@ -23,14 +23,7 @@
 }
 
 @mixin image-blur {
-  animation-name: image-blur;
-  animation-duration: 0.25s;
-  animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-  animation-iteration-count: 1;
-  animation-direction: normal;
-  animation-delay: 0;
-  animation-play-state: running;
-  animation-fill-mode: forwards;
+  animation: image-blur 0.25s cubic-bezier(0.215, 0.61, 0.355, 1) 1 normal;
 
   @keyframes image-blur {
     0% {
@@ -69,5 +62,15 @@
       transform: translateY(0);
       opacity: 1;
     }
+  }
+}
+
+@mixin menu-link {
+  color: $secondary-color;
+  cursor: pointer;
+  padding: 1rem;
+  transition: all 0.2s ease-in;
+  &:hover {
+    background-color: lighten($dark-grey, 10%);
   }
 }

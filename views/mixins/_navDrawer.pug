@@ -1,0 +1,9 @@
+mixin navDrawer()
+
+  div(class="nav-drawer medium-up--hide")
+    div(class="nav-drawer__nav")
+        if settings.headerMenu
+          ul(class="nav-drawer__linklist")
+            each item in settings.headerMenu
+              li(class="nav-drawer__item")
+                a(class="nav-drawer__link" href=item.url) #{item.name}
