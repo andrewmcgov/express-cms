@@ -8,6 +8,7 @@ import { Accordion } from '../../node_modules/foundation-sites/js/foundation.acc
 
 Foundation.plugin(Sticky, 'Sticky');
 Foundation.plugin(DropdownMenu, 'DropdownMenu');
+Foundation.plugin(Accordion, 'Accordion');
 Foundation.addToJquery($);
 $(document).foundation();
 
