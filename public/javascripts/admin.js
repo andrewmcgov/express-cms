@@ -16,7 +16,6 @@ const editingMenu = document.getElementById('menuForm');
 const editingPost = document.getElementById('post');
 const Image = document.querySelector('.homepage-image');
 
-console.log('admin js');
 if (editingMenu) {
   menuForm();
 }
