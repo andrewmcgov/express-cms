@@ -1,19 +1,16 @@
 // Core - these two are required :-)
-import tinymce from "tinymce/tinymce";
-import "tinymce/themes/modern/theme";
+import * as tinymce from 'tinymce/tinymce.min.js';
+import 'tinymce/themes/modern/theme.min.js';
 
 // Plugins
-import "tinymce/plugins/paste/plugin";
-import "tinymce/plugins/link/plugin";
-import "tinymce/plugins/autoresize/plugin";
-// import "tinymce/skins/lightgray/skin.min.css";
+import 'tinymce/plugins/paste/plugin';
+import 'tinymce/plugins/link/plugin';
+import 'tinymce/plugins/autoresize/plugin';
 // Initialize
-function buildTinyMce(tinyDiv) {
+export default function buildTinyMce(tinyDiv) {
   tinymce.init({
-    selector: "#tinymce",
+    selector: '#tinymce',
     skin: false,
-    plugins: ["paste", "link", "autoresize"]
+    plugins: ['paste', 'link', 'autoresize']
   });
 }
-
-export default buildTinyMce;
