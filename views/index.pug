@@ -6,5 +6,8 @@ block content
 
   +hero()
 
-  each post in posts
-    +postItem(post)
+  main
+    - var oddPost = false
+    each post in posts
+      +postItem(post, oddPost)
+      - oddPost = !oddPost

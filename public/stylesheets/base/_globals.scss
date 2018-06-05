@@ -15,6 +15,12 @@ main {
   display: none;
 }
 
+.small--hide {
+  @media only screen and (max-width: $mobile-down) {
+    display: none;
+  }
+}
+
 .fade-image-in {
   @include image-blur;
 }
