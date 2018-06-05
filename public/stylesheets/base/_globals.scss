@@ -1,6 +1,7 @@
 // Body
 body {
   background-color: $off-white;
+  position: relative;
 }
 
 main {
@@ -12,12 +13,18 @@ main {
 }
 
 .hide {
-  display: none;
+  display: none !important;
 }
 
 .small--hide {
   @media only screen and (max-width: $mobile-down) {
-    display: none;
+    display: none !important;
+  }
+}
+
+.medium-up--hide {
+  @media only screen and (min-width: $mobile-up) {
+    display: none !important;
   }
 }
 
@@ -34,4 +41,22 @@ main {
 
 .title-slide-up {
   @include title-slide-in;
+}
+
+.body-overlay {
+  content: '';
+}
+
+.open {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba($dark-grey, 0.5);
+  z-index: 9;
+}
+
+::-webkit-scrollbar {
+  display: none;
 }

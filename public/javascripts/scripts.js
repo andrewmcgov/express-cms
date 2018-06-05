@@ -4,9 +4,14 @@ require('../stylesheets/style.admin.scss');
 import Hero from './modules/Hero';
 import SinglePost from './modules/SinglePost';
 import scrollShow from './modules/scrollShow';
+import NavDrawer from './modules/navDrawer';
+import TopBar from './modules/topBar';
 
 const heroContainer = document.querySelector('.hero');
 const BlogPostImage = document.querySelector('.post__hero--image');
+const drawer = document.querySelector('.nav-drawer');
+const trigger = document.querySelector('.trigger');
+const topBar = document.querySelector('.top-bar');
 
 if (heroContainer) {
   const HeroSection = new Hero(heroContainer);
@@ -44,3 +49,4 @@ if (BlogPostImage) {
 }
 
 scrollShow();
+new NavDrawer(drawer, trigger);

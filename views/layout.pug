@@ -1,4 +1,5 @@
 include mixins/_topBar
+include mixins/_navDrawer
 include mixins/_footer
 
 doctype html
@@ -13,7 +14,9 @@ html
 
   header
     +topBar()
+    +navDrawer()
 
+  div(class="body-overlay")
   block content
 
   +footer()
