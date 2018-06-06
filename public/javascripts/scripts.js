@@ -1,5 +1,4 @@
 require('../stylesheets/style.public.scss');
-require('../stylesheets/style.admin.scss');
 
 import Hero from './modules/Hero';
 import SinglePost from './modules/SinglePost';

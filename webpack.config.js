@@ -4,7 +4,6 @@ const webpack = require('webpack');
 // create multiple instances
 const extractAdminCSS = new ExtractTextPlugin('admin-style.css');
 const extractMainCSS = new ExtractTextPlugin('style.css');
-const extractMceCSS = new ExtractTextPlugin('mce-style.css');
 
 const config = {
   entry: {
@@ -93,14 +92,7 @@ const config = {
       }
     ]
   },
-  plugins: [
-    extractMainCSS,
-    extractAdminCSS
-    // new webpack.optimize.CommonsChunkPlugin({
-    //   name: 'adminvendors',
-    //   minChunks: Infinity
-    // })
-  ],
+  plugins: [extractMainCSS, extractAdminCSS],
   watch: true
 };
 
