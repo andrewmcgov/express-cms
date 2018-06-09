@@ -119,4 +119,17 @@ router.get(
 
 router.post('/admin/account/edit', adminController.editAccount);
 
+// catch 404s for admin
+router.get('/admin/*', authController.isLoggedIn, function(req, res) {
+  res.render('adminNotFound', { title: '404 Not Found' });
+});
+
+// catch 404s for blog
+router.get('/*', catchErrors(blogSettingsController.getSettings), function(
+  req,
+  res
+) {
+  res.render('notFound', { title: '404 Not Found', settings: req.settings });
+});
+
 module.exports = router;
