@@ -64,7 +64,7 @@ app.use(function(req, res, next) {
   req.login = promisify(req.login, req);
   const err = new Error('Not Found');
   err.status = 404;
-  res.render('notFound');
+  next(err);
 });
 
 // error handler
