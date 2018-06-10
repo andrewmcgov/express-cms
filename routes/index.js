@@ -22,23 +22,39 @@ router.get('/about', function(req, res, next) {
 
 router.get('/admin', authController.isLoggedIn, postController.loadAdmin);
 
-router.get('/admin/new-post', postController.addPost);
+router.get(
+  '/admin/new-post',
+  authController.isLoggedIn,
+  postController.addPost
+);
+
 router.post(
   '/admin/new-post',
+  authController.isLoggedIn,
   postController.upload,
   catchErrors(postController.resize),
   catchErrors(postController.writePost)
 );
 
-router.get('/admin/posts/:slug/edit', catchErrors(postController.editPost));
+router.get(
+  '/admin/posts/:slug/edit',
+  authController.isLoggedIn,
+  catchErrors(postController.editPost)
+);
+
 router.post(
   '/admin/new-post/:slug/:id/edit',
+  authController.isLoggedIn,
   postController.upload,
   catchErrors(postController.resize),
   catchErrors(postController.updatePost)
 );
 
-router.post('/admin/delete-post/:id', catchErrors(postController.deletePost));
+router.post(
+  '/admin/delete-post/:id',
+  authController.isLoggedIn,
+  catchErrors(postController.deletePost)
+);
 
 router.get(
   '/posts/:slug',
@@ -79,13 +95,37 @@ router.post(
 router.post('admin/reset');
 router.get('/admin/forgot', catchErrors(authController.forgotPassword));
 
-router.get('/admin/menus', menuController.loadMenus);
-router.get('/admin/menus/new-menu', menuController.startNewMenu);
-router.get('/admin/menus/:id/edit', menuController.editMenu);
-router.post('/admin/menus/new-menu', menuController.saveNewMenu);
-router.post('/admin/menus/:id/edit', menuController.saveExistingMenu);
+router.get('/admin/menus', authController.isLoggedIn, menuController.loadMenus);
 
-router.get('/admin/admin-panel', function(req, res, next) {
+router.get(
+  '/admin/menus/new-menu',
+  authController.isLoggedIn,
+  menuController.startNewMenu
+);
+
+router.get(
+  '/admin/menus/:id/edit',
+  authController.isLoggedIn,
+  menuController.editMenu
+);
+
+router.post(
+  '/admin/menus/new-menu',
+  authController.isLoggedIn,
+  menuController.saveNewMenu
+);
+
+router.post(
+  '/admin/menus/:id/edit',
+  authController.isLoggedIn,
+  menuController.saveExistingMenu
+);
+
+router.get('/admin/admin-panel', authController.isLoggedIn, function(
+  req,
+  res,
+  next
+) {
   res.render('adminPanel');
 });
 
@@ -103,9 +143,14 @@ router.post(
   settingsController.addAdmin
 );
 
-router.get(`/admin/blog-settings`, blogSettingsController.loadSettings);
+router.get(
+  '/admin/blog-settings',
+  authController.isLoggedIn,
+  blogSettingsController.loadSettings
+);
 router.post(
   '/admin/blog-settings',
+  authController.isLoggedIn,
   blogSettingsController.upload,
   catchErrors(blogSettingsController.resize),
   blogSettingsController.saveSettings
@@ -117,6 +162,25 @@ router.get(
   adminController.renderEditAccount
 );
 
-router.post('/admin/account/edit', adminController.editAccount);
+router.post(
+  '/admin/account/edit',
+  authController.isLoggedIn,
+  adminController.editAccount
+);
+
+// catch 404s for admin
+router.get('/admin/*', authController.isLoggedIn, function(req, res) {
+  res.status(404);
+  res.render('adminNotFound', { title: '404 Not Found' });
+});
+
+// catch 404s for blog
+router.get('/*', catchErrors(blogSettingsController.getSettings), function(
+  req,
+  res
+) {
+  res.status(404);
+  res.render('notFound', { title: '404 Not Found', settings: req.settings });
+});
 
 module.exports = router;
