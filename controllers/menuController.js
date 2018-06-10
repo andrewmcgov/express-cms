@@ -24,7 +24,7 @@ const buildMenuToSave = req => {
   // Get menu items from request and put them into the menuItems array
   menuToSave.menuItems = req.body.linkName.map((name, i) => {
     return {
-      name: name,
+      name,
       url: req.body.linkUrl[i]
     };
   });
