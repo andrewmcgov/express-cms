@@ -1,0 +1,30 @@
+extends layout
+
+include mixins/_postItem
+
+block content
+  
+  main
+    - var oddPost = false
+    each post in posts
+      +postItem(post, oddPost)
+      - oddPost = !oddPost
+    
+    div(class="pagination")
+      ul(class="pagination__list")
+        - const first = (page == 1) ? true : false;
+        - const last = (page == pages) ? true : false;
+        li
+          a(href="/posts" class=`pagination__button ${first ? 'disabled' : ''}`) First
+
+        li
+          a(href=`/posts?page=${page - 1}` class=`pagination__button ${first ? 'disabled' : ''}`) Previous
+ 
+        li
+          span(class="pagination__current-page") Page #{page} of #{pages}
+
+        li
+          a(href=`/posts?page=${+page + 1}` class=`pagination__button ${last ? 'disabled' : ''}`) Next
+
+        li
+          a(href=`/posts?page=${pages}` class=`pagination__button ${last ? 'disabled' : ''}`) Last
