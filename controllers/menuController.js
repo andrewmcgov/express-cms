@@ -15,21 +15,19 @@ exports.startNewMenu = async (req, res) => {
 };
 
 // This function creates the Object to send into the database
-// by building the manuItems array from the request
+// by building the menuItems array from the request
 const buildMenuToSave = req => {
   const menuToSave = {
     title: req.body.title,
     menuItems: []
   };
   // Get menu items from request and put them into the menuItems array
-  let currentItem = 1;
-  while (req.body[`${currentItem}-name`]) {
-    menuToSave.menuItems.push({
-      name: req.body[`${currentItem}-name`],
-      url: req.body[`${currentItem}-url`]
-    });
-    currentItem++;
-  }
+  menuToSave.menuItems = req.body.linkName.map((name, i) => {
+    return {
+      name,
+      url: req.body.linkUrl[i]
+    };
+  });
   return menuToSave;
 };
 

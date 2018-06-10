@@ -26,28 +26,7 @@ function menuForm(form) {
     inputToShow.querySelector('[data-link-url]').name = 'linkUrl';
   };
 
-  const makeMenu = function() {
-    let menuItems = document.querySelectorAll('.menu-item');
-    let currentItem = 0;
-
-    menuItems.forEach(function(item) {
-      currentItem++;
-      let name = item.querySelector('input[name="linkName"]');
-      let url = item.querySelector('[name="linkUrl"]');
-
-      name.name = `${currentItem}-name`;
-      url.name = `${currentItem}-url`;
-    });
-  };
-
-  const saveMenu = function(e) {
-    e.preventDefault();
-    makeMenu();
-    document.querySelector('#menuForm').submit();
-  };
-
   newMenuBtn.addEventListener('click', addNewMenu);
-  saveMenuBtn.addEventListener('click', saveMenu);
   linkTypeSelects.forEach(select =>
     select.addEventListener('change', changeLinkType)
   );
