@@ -5,11 +5,12 @@ body {
 }
 
 main {
+  padding-top: 40px;
+  max-width: 1200px;
   @media only screen and (min-width: $mobile-up) {
     margin: 0 auto;
     padding: 60px 30px;
   }
-  max-width: 1200px;
 }
 
 .hide {
@@ -44,7 +45,7 @@ main {
 }
 
 .body-overlay {
-  content: '';
+  content: "";
 }
 
 .open {
@@ -54,7 +55,7 @@ main {
   left: 0;
   right: 0;
   background: rgba($dark-grey, 0.5);
-  z-index: 9;
+  z-index: 3;
 }
 
 ::-webkit-scrollbar {

@@ -33,4 +33,8 @@ class NavDrawer {
   }
 }
 
-export default NavDrawer;
+export function navDrawerinit() {
+  const drawer = document.querySelector('.nav-drawer');
+  const trigger = document.querySelector('.trigger');
+  const navigationDrawer = new NavDrawer(drawer, trigger);
+}

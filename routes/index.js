@@ -9,16 +9,7 @@ const menuController = require('../controllers/menuController');
 const settingsController = require('../controllers/settingsController');
 const blogSettingsController = require('../controllers/blogSettingsController');
 
-/* GET home page. */
-router.get(
-  '/',
-  catchErrors(blogSettingsController.getSettings),
-  catchErrors(postController.loadIndex)
-);
-
-router.get('/about', function(req, res, next) {
-  res.render('page', { title: 'About' });
-});
+// ************************ ADMIN ROUTES ****************************** //
 
 router.get('/admin', authController.isLoggedIn, postController.loadAdmin);
 
@@ -54,12 +45,6 @@ router.post(
   '/admin/delete-post/:id',
   authController.isLoggedIn,
   catchErrors(postController.deletePost)
-);
-
-router.get(
-  '/posts/:slug',
-  catchErrors(blogSettingsController.getSettings),
-  catchErrors(postController.singlePost)
 );
 
 router.get('/admin/login', adminController.loginForm);
@@ -173,6 +158,30 @@ router.get('/admin/*', authController.isLoggedIn, function(req, res) {
   res.status(404);
   res.render('adminNotFound', { title: '404 Not Found' });
 });
+
+// ************************ BLOG ROUTES ****************************** //
+
+router.get(
+  '/',
+  catchErrors(blogSettingsController.getSettings),
+  catchErrors(postController.loadIndex)
+);
+
+router.get('/about', function(req, res, next) {
+  res.render('page', { title: 'About' });
+});
+
+router.get(
+  '/posts',
+  catchErrors(blogSettingsController.getSettings),
+  catchErrors(postController.getPosts)
+);
+
+router.get(
+  '/posts/:slug',
+  catchErrors(blogSettingsController.getSettings),
+  catchErrors(postController.singlePost)
+);
 
 // catch 404s for blog
 router.get('/*', catchErrors(blogSettingsController.getSettings), function(

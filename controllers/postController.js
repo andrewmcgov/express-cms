@@ -44,6 +44,38 @@ exports.loadIndex = async (req, res) => {
   res.render('index', { title: 'Our CMS', posts, settings: req.settings });
 };
 
+exports.getPosts = async (req, res) => {
+  const page = req.query.page || 1;
+  const limit = 3;
+  const skip = page * limit - limit;
+
+  // Find the posts
+  const postsPromise = Post.find()
+    .skip(skip)
+    .limit(limit)
+    .sort({ created: 'desc' });
+
+  const countPostsPromise = Post.count();
+
+  const [posts, count] = await Promise.all([postsPromise, countPostsPromise]);
+
+  const pages = Math.ceil(count / limit);
+
+  if (!posts.length && skip) {
+    res.redirect(`/posts?page=${pages}`);
+    return;
+  }
+
+  res.render('posts', {
+    title: 'Posts',
+    settings: req.settings,
+    posts,
+    page,
+    pages,
+    count
+  });
+};
+
 exports.loadAdmin = async (req, res) => {
   const posts = await Post.find({ author: req.user._id });
   res.render('adminHome', { title: 'Welcome, Admin', posts });

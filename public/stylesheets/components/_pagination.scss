@@ -1,0 +1,21 @@
+.pagination {
+  margin: 2rem;
+}
+
+.pagination__list {
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagination__button {
+  padding: 1rem;
+  background-color: $secondary-color;
+  color: $black;
+  margin: 0.5rem;
+  &.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+}
