@@ -1,11 +1,11 @@
 .nav-drawer {
   position: fixed;
-  top: 43px;
+  top: 0;
   transform: translateX(105%);
   width: 300px;
   background: $dark-grey;
   right: 0;
-  z-index: 12;
+  z-index: 6;
   height: 100%;
   will-change: transform;
   transition: transform 0.25s cubic-bezier(0.19, 1, 0.22, 1);
@@ -23,6 +23,7 @@
   height: 100%;
   width: 100%;
   list-style: none;
+  padding-top: 4rem;
 }
 
 .nav-drawer__item {
