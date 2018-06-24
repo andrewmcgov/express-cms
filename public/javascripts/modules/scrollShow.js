@@ -15,7 +15,6 @@ function scrollShow() {
         el.classList.remove('scroll-show--hidden');
       }
     });
-    console.log('running');
   }
 
   onScroll();

@@ -1,51 +1,25 @@
 require('../stylesheets/style.public.scss');
 
-import Hero from './modules/Hero';
-import SinglePost from './modules/SinglePost';
+import loadHeroSectionImage from './modules/Hero';
+import displayImage from './modules/SinglePost';
 import scrollShow from './modules/scrollShow';
-import NavDrawer from './modules/navDrawer';
-import TopBar from './modules/topBar';
+import { navDrawerinit } from './modules/navDrawer';
 
 const heroContainer = document.querySelector('.hero');
-const BlogPostImage = document.querySelector('.post__hero--image');
-const drawer = document.querySelector('.nav-drawer');
-const trigger = document.querySelector('.trigger');
-const topBar = document.querySelector('.top-bar');
+const postPage = document.querySelector('.post');
 
-if (heroContainer) {
-  const HeroSection = new Hero(heroContainer);
+window.addEventListener('load', init);
 
-  function showHero() {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        HeroSection.imageFadeIn(HeroSection.heroImage);
-        resolve();
-      }, 10);
-    });
-  }
-  showHero().then(() => {
-    setTimeout(() => {
-      HeroSection.contentIn();
-    }, 100);
-  });
-}
-
-if (BlogPostImage) {
-  const Post = document.querySelector('.post');
-  const BlogPost = new SinglePost(Post);
-  function displayImage() {
-    return new Promise(function(resolve, reject) {
-      setTimeout(function() {
-        BlogPost.imageFadeIn(BlogPost.postImage);
-        resolve();
-      }, 300);
-    });
+function init() {
+  if (heroContainer) {
+    loadHeroSectionImage(heroContainer);
   }
 
-  displayImage().then(function() {
-    BlogPost.titleSlideIn(BlogPost);
-  });
+  if (postPage) {
+    displayImage();
+  }
+
+  navDrawerinit();
 }
 
 scrollShow();
-new NavDrawer(drawer, trigger);

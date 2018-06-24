@@ -19,4 +19,19 @@ class SinglePost {
   }
 }
 
-export default SinglePost;
+function displayImage() {
+  const Post = document.querySelector('.post');
+  const BlogPost = new SinglePost(Post);
+  function checkIfImageLoads() {
+    return new Promise(function(resolve) {
+      if (BlogPost.postImage && BlogPost.postImage.complete) {
+        BlogPost.imageFadeIn(BlogPost.postImage);
+        resolve();
+      }
+    });
+  }
+
+  checkIfImageLoads().then(BlogPost.titleSlideIn(BlogPost));
+}
+
+export default displayImage;
